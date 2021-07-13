@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Raptors</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body id="top">
+    <main>
+      <h1>Beware of the Raptors</h1>
+
+      <div class="group">
+        <p>
+          Perhaps you're interested in learning to use HTML5 Audio? You've come
+          to the right place, but be careful of the raptors.
+        </p>
+      </div>
+
+      <a class="raptor-button" href="#step-one">Get started</a>
+    </main>
+    <section id="step-one">
+      <h2>Hint 1</h2>
+      <div class="group">
+        <p>
+          Use the element inspector to find what's making noise. You're looking
+          for something to do with <em>audio</em>.
+        </p>
+        <p>
+          You can use your Firefox, Chrome, or other browser's developer tools
+          to see how the JavaScript works too. This could provide you with some
+          big hints. Go to the Network tab and refresh to look for the name of
+          the JavaScript file.
+        </p>
+      </div>
+      <div class="buttons">
+        <a class="raptor-button" href="#top">Top</a>
+        <button class="raptor-button">Summon the raptor</button>
+        <a class="raptor-button" href="#step-two">Next hint</a>
+      </div>
+    </section>
+    <section id="step-two">
+      <h2>Hint 2</h2>
+      <div class="group">
+        <p>
+          The HTML element you need uses the <code>&lt;audio&gt;</code> tag.
+        </p>
+        <p>
+          Find out more about it at the
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio"
+            >MDN documentation for the Embed Audio element</a
+          >.
+        </p>
+      </div>
+      <div class="buttons">
+        <a class="raptor-button" href="#top">Top</a>
+        <button class="raptor-button">Summon the raptor</button>
+        <a class="raptor-button" href="#step-three">Next hint</a>
+      </div>
+    </section>
+    <section id="step-three">
+      <h2>Hint 3</h2>
+      <div class="group">
+        <p>
+          In the JavaScript, you're looking for the method which plays the
+          audio, so check for <code>someAudioObject.play()</code>.
+        </p>
+        <p>
+          Find out more about the play method at the
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play"
+            >MDN documentation for the HTML Media Element in JavaScript</a
+          >.
+        </p>
+      </div>
+      <div class="buttons">
+        <a class="raptor-button" href="#top">Top</a>
+        <button class="raptor-button" href="#step-one">
+          Summon the raptor
+        </button>
+        <a class="raptor-button" href="#step-two">See some code</a>
+      </div>
+    </section>
+    <section id="solution">
+      <h2>A solution</h2>
+      <div class="group">
+        <p>The magic happens here:</p>
+        <pre><code>
+          const raptorAudio = document.querySelector('audio')
+          raptorAudio.play()
+        </code></pre>
+        <p>
+          We're able to select and play the audio element. We can control when
+          the sound plays by running this code on whichever event we like.
+        </p>
+      </div>
+      <div class="buttons">
+        <a class="raptor-button" href="#top">Top</a>
+        <button class="raptor-button" href="#step-one">
+          Summon the raptor
+        </button>
+        <a
+          class="raptor-button"
+          href="https://github.com/rjkerrison/textbook/audio/controls/raptors"
+          >See this project on GitHub</a
+        >
+      </div>
+    </section>
+    <aside>
+      <picture class="raptor hiding">
+        <img src="./raptor.png" alt="Raptor" />
+      </picture>
+    </aside>
+
+    <audio src="./raptor-call.wav"></audio>
+    <script src="./raptors.js"></script>
+  </body>
+</html>

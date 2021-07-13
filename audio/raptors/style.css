@@ -1,0 +1,114 @@
+@import url('http://fonts.cdnfonts.com/css/jurassic-park');
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-image: url(./jurassic.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Maven Pro', sans-serif;
+  color: white;
+  min-height: 100vh;
+}
+
+h1,
+h2 {
+  font-family: 'Jurassic Park', sans-serif;
+  margin: 1rem;
+  padding: 0.25em;
+  background-color: #dc0c08;
+  font-weight: 400;
+  border: 0.05em solid #fcfd41;
+  border-radius: 0.5em;
+  line-height: 0.5;
+}
+
+h1 {
+  font-size: 10rem;
+}
+
+h2 {
+  font-size: 8rem;
+}
+
+p a:visited {
+  color: #fcfd41;
+}
+
+.group {
+  font-size: 2rem;
+  background-color: black;
+  padding: 2rem;
+  margin: 1rem;
+  border-radius: 5rem;
+  border: 0.25rem solid #fcfd41;
+}
+
+.group p {
+  margin: 0 0 1rem 0;
+}
+
+.raptor-button {
+  background-color: #dc0c08;
+  padding: 1rem;
+  border-radius: 2rem;
+  font-size: 2rem;
+  border: 0.25rem solid #fcfd41;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.raptor-button:hover {
+  background-color: black;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+main,
+section {
+  display: flex;
+  margin: 0;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  justify-content: center;
+}
+
+.raptor.hiding {
+  bottom: -500px;
+  right: -400px;
+}
+.raptor {
+  z-index: 1;
+  transition: all 2s ease-in-out;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height: 500px;
+  width: 400px;
+}
+
+picture img {
+  max-width: 100%;
+  height: auto;
+}
+
+.hidden {
+  display: none;
+}

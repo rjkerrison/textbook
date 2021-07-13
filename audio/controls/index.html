@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      audio.full-width {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Audio with controls</h1>
+    <p>
+      Inspect the audio elements below to see how their controls are being
+      generated. It's surprisingly simple!
+    </p>
+    <audio
+      src="https://upload.wikimedia.org/wikipedia/commons/8/89/Big_Ben_recorded_in_1890.ogg"
+      controls
+    ></audio>
+    <audio src="./sounds/wilhelm-scream.ogg" controls></audio>
+    <p>
+      In the following audio element, we've added some custom controls with
+      JavaScript. For a long podcast, for instance, this can be useful as skips
+      to highlights or sections.
+    </p>
+    <audio
+      class="full-width"
+      id="daily-ep"
+      src="https://nyt-injected.simplecastaudio.com/03d8b493-87fc-4bd1-931f-8a8e9b945d8a/episodes/6cfc2708-0962-4c49-83d6-003b4c8f9c9b/audio/128/default.mp3/default.mp3_f303a39d15c761268b688343fb80613c_30103707.mp3"
+      controls
+    ></audio>
+    <button id="plot-synopsis" data-time="192">
+      Driving Miss Daisy plot synopsis
+    </button>
+    <button id="lack-of-agency" data-time="733">
+      Problems with lack of agency
+    </button>
+    <script>
+      console.log('You just need to add the "controls" attribute!')
+
+      const daily = document.querySelector('audio#daily-ep')
+      const playPodcastFrom = (timeInSeconds) => {
+        daily.currentTime = timeInSeconds
+        daily.play()
+      }
+      const setupButton = (button) =>
+        button.addEventListener('click', () =>
+          playPodcastFrom(button.dataset.time)
+        )
+
+      const buttons = document.querySelectorAll('button')
+      buttons.forEach(setupButton)
+    </script>
+  </body>
+</html>
