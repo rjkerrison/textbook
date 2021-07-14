@@ -10,12 +10,30 @@ html {
 }
 
 body {
-  background-image: url(./jurassic.jpg);
-  background-size: cover;
-  background-attachment: fixed;
+  position: relative;
   font-family: 'Maven Pro', sans-serif;
   color: white;
   min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  background-image: url(./jurassic.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: fixed;
+  z-index: -1;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+}
+
+pre {
+  white-space: pre-wrap;
+  font-size: 1rem;
 }
 
 h1,
@@ -31,11 +49,12 @@ h2 {
 }
 
 h1 {
-  font-size: 10rem;
+  font-size: 5rem;
+  text-align: center;
 }
 
 h2 {
-  font-size: 8rem;
+  font-size: 4rem;
 }
 
 p a:visited {
@@ -43,7 +62,7 @@ p a:visited {
 }
 
 .group {
-  font-size: 2rem;
+  font-size: 1.5rem;
   background-color: black;
   padding: 2rem;
   margin: 1rem;
@@ -81,7 +100,7 @@ main,
 section {
   display: flex;
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
   flex-direction: column;
   align-items: center;
 }
@@ -111,4 +130,22 @@ picture img {
 
 .hidden {
   display: none;
+}
+
+@media screen and (min-width: 600px) {
+  h1 {
+    font-size: 10rem;
+  }
+
+  h2 {
+    font-size: 8rem;
+  }
+
+  .group {
+    font-size: 2rem;
+  }
+
+  pre {
+    font-size: 1.5rem;
+  }
 }
