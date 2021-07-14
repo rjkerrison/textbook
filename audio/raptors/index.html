@@ -5,8 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Raptors</title>
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/github-dark.min.css"
+    />
     <link rel="stylesheet" href="./style.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
   </head>
+
   <body id="top">
     <main>
       <h1>Beware of the Raptors</h1>
@@ -65,7 +71,9 @@
       <div class="group">
         <p>
           In the JavaScript, you're looking for the method which plays the
-          audio, so check for <code>someAudioObject.play()</code>.
+          audio, so check for
+          <code lang="javascript" lang="javascript">someAudioObject.play()</code
+          >.
         </p>
         <p>
           Find out more about the play method at the
@@ -87,13 +95,14 @@
       <h2>A solution</h2>
       <div class="group">
         <p>The magic happens here:</p>
-        <pre><code>
-          const raptorAudio = document.querySelector('audio')
-          raptorAudio.play()
-        </code></pre>
+        <pre><code lang="javascript"
+          >const raptorAudio = document.querySelector('audio')
+raptorAudio.play()</code
+          ></pre>
         <p>
-          We're able to select and play the audio element. We can control when
-          the sound plays by running this code on whichever event we like.
+          We're able to select the audio element, then play it. We can control
+          when the sound plays by running the <code>play()</code> command on
+          whichever event we like.
         </p>
       </div>
       <div class="buttons">
@@ -116,5 +125,8 @@
 
     <audio src="./raptor-call.wav"></audio>
     <script src="./raptors.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
   </body>
 </html>

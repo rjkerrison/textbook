@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --header-height: 5rem;
+  --relief: rgb(159, 47, 29);
+  --relief-alt: rgb(123, 99, 56);
+  --relief-light: rgb(216, 158, 56);
+  --background: rgba(255, 255, 255, 0.9);
+  --background-alt: rgba(255, 255, 255, 0.7);
+}
+
+html {
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/1/15/Toshiba_Vacuum_tube_Radio.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  scroll-behavior: smooth;
+}
+body {
+  font-size: 125%;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: 'Roboto Slab', serif;
+}
+header {
+  position: fixed;
+  top: 0;
+  height: var(--header-height);
+  margin: 0;
+  width: 100%;
+  max-width: 1000px;
+  background-color: var(--background);
+}
+nav ul {
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0.5rem 0;
+}
+a {
+  color: var(--relief);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--relief-alt);
+  text-decoration: underline;
+}
+h1,
+h2 {
+  font-family: 'Maven Pro', sans-serif;
+  margin: 0;
+}
+h1 {
+  font-size: 1.5rem;
+  width: 100%;
+  text-align: center;
+}
+section {
+  padding-top: var(--header-height);
+  min-height: 100vh;
+}
+.section-header {
+  position: sticky;
+  top: var(--header-height);
+  background: var(--background);
+}
+.section-inner {
+  background-color: var(--background-alt);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+audio.full-width {
+  width: 100%;
+}
+
+button {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  margin: 0.25rem;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 1rem 2rem -0.5rem black;
+  background-color: var(--relief-light);
+  transition: all 0.25s ease-in-out;
+  color: black;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--background);
+  /* background-color: black;
+  color: var(--relief-light); */
+  transform: scale(1.0125) translateY(-0.125rem);
+  box-shadow: 0 1.5rem 2rem -0.5rem black;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+}
+
+@media screen and (min-width: 600px) {
+  :root {
+    --header-height: 7rem;
+  }
+
+  header {
+    border-radius: 3em;
+    margin: 0.5rem 0;
+  }
+
+  section {
+    padding-top: calc(var(--header-height) + 1rem);
+  }
+
+  .section-header {
+    position: static;
+    background: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 1rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h1,
+  h2 {
+    margin: 0.5rem 0;
+  }
+
+  h2 {
+    background-color: var(--relief-light);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+  }
+}

@@ -5,55 +5,197 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      audio.full-width {
-        width: 100%;
-      }
-    </style>
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/github-dark.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
   </head>
-  <body>
-    <h1>Audio with controls</h1>
-    <p>
-      Inspect the audio elements below to see how their controls are being
-      generated. It's surprisingly simple!
-    </p>
-    <audio
-      src="https://upload.wikimedia.org/wikipedia/commons/8/89/Big_Ben_recorded_in_1890.ogg"
-      controls
-    ></audio>
-    <audio src="./sounds/wilhelm-scream.ogg" controls></audio>
-    <p>
-      In the following audio element, we've added some custom controls with
-      JavaScript. For a long podcast, for instance, this can be useful as skips
-      to highlights or sections.
-    </p>
-    <audio
-      class="full-width"
-      id="daily-ep"
-      src="https://nyt-injected.simplecastaudio.com/03d8b493-87fc-4bd1-931f-8a8e9b945d8a/episodes/6cfc2708-0962-4c49-83d6-003b4c8f9c9b/audio/128/default.mp3/default.mp3_f303a39d15c761268b688343fb80613c_30103707.mp3"
-      controls
-    ></audio>
-    <button id="plot-synopsis" data-time="192">
-      Driving Miss Daisy plot synopsis
-    </button>
-    <button id="lack-of-agency" data-time="733">
-      Problems with lack of agency
-    </button>
+  <body id="top">
+    <header>
+      <h1>HTML5 Audio with controls</h1>
+      <nav>
+        <ul>
+          <li><a href="#simple-controls">Simple</a></li>
+          <li><a href="#custom-controls">Custom</a></li>
+          <li><a href="#js-only">JS Only</a></li>
+          <li><a href="#further-reading">Further reading</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section id="simple-controls">
+      <div class="section-header sticky">
+        <h2>Simple HTML5 controls</h2>
+      </div>
+      <div class="section-inner">
+        <p>
+          Inspect the audio elements below to see how their controls are being
+          generated. It's surprisingly simple!
+        </p>
+        <audio
+          src="https://upload.wikimedia.org/wikipedia/commons/8/89/Big_Ben_recorded_in_1890.ogg"
+          controls
+        ></audio>
+        <audio src="./sounds/wilhelm-scream.ogg" controls></audio>
+        <p>
+          Head to the
+          <a href="#simple-controls-code">next section</a> to see the code.
+        </p>
+      </div>
+    </section>
+    <section id="simple-controls-code">
+      <div class="section-header sticky">
+        <h2>Simple HTML5 controls: the code you need</h2>
+      </div>
+      <div class="section-inner">
+        <p>
+          For the Wilhelm Scream sound below, we are generating the controls by
+          specifying just one attribute.
+        </p>
+        <audio src="./sounds/wilhelm-scream.ogg" controls></audio>
+        <pre><code lang="html">&lt;audio
+  src="./sounds/wilhelm-scream.ogg"
+  controls
+&gt;&lt;/audio&gt;</code></pre>
+        <p>
+          The <code>controls</code> attribute is part of the specification for
+          the HTML5 audio element, and it tells browsers to generate user
+          controls to play, pause, skip to a certain point in the audio, and
+          change the volume.
+        </p>
+        <p>
+          As well as these default controls, we can also create
+          <a href="#custom-controls">custom controls</a>.
+        </p>
+      </div>
+    </section>
+    <section id="custom-controls">
+      <div class="section-header sticky">
+        <h2>Custom audio controls</h2>
+        <span><a href="#top">Top</a></span>
+      </div>
+      <div class="section-inner">
+        <p>
+          In the following audio element, we've added some custom controls.
+          Below the normal controls, we've added some buttons which advance the
+          user to predetermined points in the audio. For a long podcast, for
+          instance, this can be useful to allow the user to skip to highlights
+          or to certain sections of the recording.
+        </p>
+        <audio
+          class="full-width"
+          id="podcast"
+          src="https://upload.wikimedia.org/wikipedia/commons/8/80/Radio_Wikipedia_Issue_2.ogg"
+          controls
+        ></audio>
+        <button data-time="102">English wikipedia stats</button>
+        <button data-time="210">Signing off</button>
+        <p>
+          We've achieved this in JavaScript by using the
+          <code lang="javascript">currentTime</code> property of the
+          <code>&lt;audio&gt;</code> element to set the time. Just in case the
+          audio wasn't playing, we call <code>.play()</code> too.
+        </p>
+        <pre><code lang="html">&lt;audio
+  class="full-width"
+  id="podcast"
+  src="https://upload.wikimedia.org/wikipedia/commons/8/80/Radio_Wikipedia_Issue_2.ogg"
+  controls
+&gt;&lt;/audio&gt;
+&lt;button data-time="102"&gt;English wikipedia stats&lt;/button&gt;
+&lt;button data-time="210"&gt;Signing off&lt;/button&gt;</code></pre>
+        <pre><code lang="javascript">const podcast = document.querySelector('audio#podcast')
+const playPodcastFrom = (timeInSeconds) => {
+  podcast.currentTime = timeInSeconds
+  podcast.play()
+}
+const setupButton = (button) =>
+  button.addEventListener('click', () =>
+    playPodcastFrom(button.dataset.time)
+  )
+
+const buttons = document.querySelectorAll('button')
+buttons.forEach(setupButton)</code></pre>
+        <p>
+          Notice how the HTML is responsible for the exact behaviour of the
+          button, identifying the number of seconds to which we want to jump.
+          The only task left for the JavaScript to do is the necessary wiring —
+          linking the button to the podcast, and taking that timestamp.
+        </p>
+        <p>
+          The timestamp (102 seconds) is part of the content of the page.
+          Specifically, it relates the podcast and the text given: it is
+          defining part of the relationship between the text and the audio.
+        </p>
+        <p>
+          Our JavaScript would work just as well with another podcast on another
+          page, as long as we have an audio with <code>id="podcast"</code> and a
+          <code>data-time</code> attribute on each of the buttons.
+        </p>
+      </div>
+    </section>
+    <section id="js-only">
+      <h2>JS Only Without HTML</h2>
+      <div class="section-inner">
+        <p>
+          We can even add audio to our pages without using the
+          <code>&lt;audio&gt;</code> tag. In JavaScript, we have the option to
+          use <code lang="javascript">new Audio()</code> to create an audio
+          element, which we can play "behind the scenes" without adding it to
+          the DOM.
+        </p>
+        <p>
+          The only problem is that we still need some kind of a trigger! In this
+          case, we've linked the sound to play when we click the button below.
+        </p>
+        <button id="js-only-button">Listen to this!</button>
+        <pre><code lang="javascript">const raptor = new Audio('../raptors/raptor-call.wav')
+const listenButton = document.querySelector('button#js-only-button')
+listenButton.addEventListener('click', () => {
+  raptor.play()
+})</code></pre>
+        <p>
+          Here, we've linked the sound to a click of a button, but with your
+          JavaScript skills, you could make a sound play in reaction to any
+          event.
+        </p>
+      </div>
+    </section>
+    <section id="further-reading">
+      <h2>Further reading</h2>
+      <div class="section-inner">
+        <p>
+          As is often the case, Mozilla Developer Network has in-depth
+          explanations for how audio works for the web, including all of the
+          available methods and all of the attributes for
+          <code>&lt;audio&gt;</code> elements.
+        </p>
+        <p>
+          There is separate documentation for the
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio"
+            >the HTML <code>audio</code> element</a
+          >, for the
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement/Audio"
+            >Javascript <code>Audio()</code> constructor</a
+          >, and for the more powerful tools in the
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API"
+            >Web Audio API</a
+          >.
+        </p>
+      </div>
+    </section>
+    <footer>
+      &copy; Robin James Kerrison. See the project on
+      <a href="https://github.com/rjkerrison/textbook">GitHub</a>.
+    </footer>
+    <script src="./controls.js"></script>
     <script>
-      console.log('You just need to add the "controls" attribute!')
-
-      const daily = document.querySelector('audio#daily-ep')
-      const playPodcastFrom = (timeInSeconds) => {
-        daily.currentTime = timeInSeconds
-        daily.play()
-      }
-      const setupButton = (button) =>
-        button.addEventListener('click', () =>
-          playPodcastFrom(button.dataset.time)
-        )
-
-      const buttons = document.querySelectorAll('button')
-      buttons.forEach(setupButton)
+      // syntax highlighting
+      hljs.highlightAll()
     </script>
   </body>
 </html>
