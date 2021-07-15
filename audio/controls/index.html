@@ -26,7 +26,8 @@
     </header>
     <section id="simple-controls">
       <div class="section-header sticky">
-        <h2>Simple HTML5 controls</h2>
+        <h2><a href="#simple-controls">Simple HTML5 controls</a></h2>
+        <span><a href="#top">Top</a></span>
       </div>
       <div class="section-inner">
         <p>
@@ -46,7 +47,12 @@
     </section>
     <section id="simple-controls-code">
       <div class="section-header sticky">
-        <h2>Simple HTML5 controls: the code you need</h2>
+        <h2>
+          <a href="#simple-controls-code"
+            >Simple HTML5 controls: the code you need</a
+          >
+        </h2>
+        <span><a href="#top">Top</a></span>
       </div>
       <div class="section-inner">
         <p>
@@ -72,7 +78,7 @@
     </section>
     <section id="custom-controls">
       <div class="section-header sticky">
-        <h2>Custom audio controls</h2>
+        <h2><a href="#custom-controls">Custom audio controls</a></h2>
         <span><a href="#top">Top</a></span>
       </div>
       <div class="section-inner">
@@ -136,7 +142,10 @@ buttons.forEach(setupButton)</code></pre>
       </div>
     </section>
     <section id="js-only">
-      <h2>JS Only Without HTML</h2>
+      <div class="section-header sticky">
+        <h2><a href="#js-only">JS Only Without HTML</a></h2>
+        <span><a href="#top">Top</a></span>
+      </div>
       <div class="section-inner">
         <p>
           We can even add audio to our pages without using the
@@ -161,9 +170,40 @@ listenButton.addEventListener('click', () => {
           event.
         </p>
       </div>
+      <div class="section-inner">
+        <p>
+          An important thing to note is that when we call the constructor to
+          create an audio object, we pass the relative path (or it could be a
+          full URL) of a sound file (.wav, .mp3, .ogg, .m4a, etc). Another way
+          to create an audio object is to give it no URL in the constructor but
+          to specify its
+          <code>src</code> attribute later.
+        </p>
+        <pre><code lang="javascript">const raptor = new Audio()
+raptor.src = '../raptors/raptor-call.wav'
+
+const listenButton = document.querySelector('button#js-only-button')
+listenButton.addEventListener('click', () => {
+  raptor.play()
+})</code></pre>
+        <p>
+          This code would have the same effect as the previous code. In this
+          case, it is simpler to specify the path of the audio file in the
+          constructor.
+        </p>
+        <p>
+          In more complex examples, we may not know the path of the audio file
+          when constructing the audio object and we might want to change that
+          file later. For instance, we could load a low fidelity version before
+          loading one with a higher bitrate.
+        </p>
+      </div>
     </section>
     <section id="further-reading">
-      <h2>Further reading</h2>
+      <div class="section-header sticky">
+        <h2><a href="#further-reading">Further reading</a></h2>
+        <span><a href="#top">Top</a></span>
+      </div>
       <div class="section-inner">
         <p>
           As is often the case, Mozilla Developer Network has in-depth
