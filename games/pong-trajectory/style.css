@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(to bottom, #200933 75%, #3d0b43);
+  height: 100vh;
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+canvas {
+  border: 2px solid rgb(235, 181, 45);
+  background: linear-gradient(rgb(137, 9, 137), rgb(155, 24, 46));
+  background: linear-gradient(to bottom, #fff951 25%, #fc28a8);
+  width: 80vh;
+  height: auto;
+}
+canvas::before {
+  content: '';
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 2px,
+    #fff 2px,
+    #fff 4px
+  );
+}
