@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Raptors</title>
+    <title>Learning HTML5 Audio with Raptors | RJK Textbook</title>
     <link
       rel="stylesheet"
       href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/github-dark.min.css"
@@ -15,7 +15,7 @@
 
   <body id="top">
     <main>
-      <h1>Beware of the Raptors</h1>
+      <h1><span class="subtitle">HTML5 Audio:</span>Beware of the Raptors</h1>
 
       <div class="group">
         <p>
@@ -94,7 +94,16 @@
     <section id="solution">
       <h2>A solution</h2>
       <div class="group">
-        <p>The magic happens here:</p>
+        <p>All we need from our HTML is an audio file we can grab.</p>
+        <pre><code lang="html">&lt;audio src="./raptor-call.wav"&gt;&lt;/audio&gt;</code></pre>
+        <p>
+          The usual rules apply for relative paths. In this case, we're looking
+          for a file called <code>raptor-call.wav</code> in the same folder as
+          our HTML file. If it exists, we can play it.
+        </p>
+      </div>
+      <div class="group">
+        <p>The real magic happens here:</p>
         <pre><code lang="javascript"
           >const raptorAudio = document.querySelector('audio')
 raptorAudio.play()</code
@@ -104,6 +113,11 @@ raptorAudio.play()</code
           when the sound plays by running the <code>play()</code> command on
           whichever event we like.
         </p>
+      </div>
+      <div class="group">
+        <p>The full JavaScript code for this page is as follows:</p>
+        <pre><code lang="javascript" data-src="./raptors.js"></code></pre>
+        <p>We have a few things happening here, such as</p>
       </div>
       <div class="buttons">
         <a class="raptor-button" href="#top">Top</a>
@@ -126,6 +140,18 @@ raptorAudio.play()</code
     <audio src="./raptor-call.wav"></audio>
     <script src="./raptors.js"></script>
     <script>
+      document.querySelectorAll('[data-src]').forEach((element) => {
+        const path = element.dataset.src
+        fetch(path)
+          .then((response) => {
+            return response.text()
+          })
+          .then((text) => {
+            console.log(text)
+            element.innerHTML = hljs.highlightAuto(text).value
+          })
+      })
+
       hljs.highlightAll()
     </script>
   </body>

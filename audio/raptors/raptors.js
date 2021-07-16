@@ -3,7 +3,7 @@ const raptorAudio = document.querySelector('audio')
 
 const showRaptor = function () {
   raptorPicture.classList.remove('hiding')
-  // We'll wait a second to time the raptor noise with the image appearing
+  // We wait 0.75 seconds so that the raptor noise times well with the image appearing
   setTimeout(() => raptorAudio.play(), 750)
   setTimeout(() => raptorPicture.classList.add('hiding'), 3000)
 }
