@@ -70,5 +70,21 @@ if (isCollision(mushroom.position, mario.boundingBox)) {
 }
 ```
 
+## Pong
 
+To coach you through the world of games,
+we have a few steps from a static drawing of a pong game,
+all the way to a playable version with questionable bounce deflections.
+
+Try making your own version of the first step, then when you're ready,
+make the necessary improvements to reach the second step, and so on.
+This is similar to how software developers work in real life:
+starting with basics and improving code iteratively.
+
+1. [Static ball and paddles](./pong-static-demo/index.html)
+2. [Demo ball movement](./pong-demo/index.html)
+3. [Moveable paddles](./pong-move-paddles/index.html)
+4. [Calculated ball trajectory](./pong-trajectory/index.html)
+5. [Playable](./pong-playable-original/index.html)
+6. [Playable with deflections](./pong-playable-with-deflections/index.html)
 
