@@ -236,6 +236,11 @@ section#timeout {
   position: relative;
 }
 
+canvas.variant-loki {
+  height: auto;
+  width: auto;
+}
+
 .variant-loki {
   height: 400px;
   width: auto;
