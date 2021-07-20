@@ -2,11 +2,19 @@
 const timeoutSection = document.querySelector('section#timeout')
 const pruneButton = document.querySelector('button#timeout-start')
 
-let timeoutStartTime = null
+let isPruning = false
 
-function startTimeout() {
-  timeoutStartTime = Date.now()
-  setTimeout(showLoki, 500)
+function togglePruning() {
+  isPruning = !isPruning
+  if (isPruning) {
+    pruneButton.textContent = 'End pruning'
+    setTimeout(showLoki, 500)
+  } else {
+    document.querySelectorAll('.variant-loki').forEach((x) => {
+      timeoutSection.removeChild(x)
+    })
+    pruneButton.textContent = 'Start pruning Lokis'
+  }
 }
 
 function showLoki() {
@@ -32,4 +40,4 @@ function showLoki() {
   })
 }
 
-pruneButton.addEventListener('click', startTimeout)
+pruneButton.addEventListener('click', togglePruning)
