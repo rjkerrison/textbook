@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Akronim&family=Fontdiner+Swanky&family=Germania+One&family=Mogra&family=New+Rocker&display=swap');
+
+.font-me-up span {
+  display: inline-block;
+  width: 0.75em;
+  height: 1em;
+  line-height: 1;
+  vertical-align: bottom;
+}
+
+.font-me-up span:nth-of-type(5n + 1) {
+  font-family: 'Akronim', cursive;
+  --font-me-up-font-1: 'Akronim';
+  --font-me-up-font-2: 'Fontdiner Swanky';
+  --font-me-up-font-3: 'Germania One';
+  --font-me-up-font-4: 'New Rocker';
+  --font-me-up-font-5: 'Mogra';
+  animation: animateFont 7s 0s infinite;
+}
+.font-me-up span:nth-of-type(5n + 2) {
+  font-family: 'Fontdiner Swanky', cursive;
+  --font-me-up-font-1: 'Fontdiner Swanky';
+  --font-me-up-font-2: 'Akronim';
+  --font-me-up-font-3: 'Mogra';
+  --font-me-up-font-4: 'Germania One';
+  --font-me-up-font-5: 'New Rocker';
+  animation: animateFont 5s 0.7s infinite;
+}
+.font-me-up span:nth-of-type(5n + 3) {
+  font-family: 'Germania One', cursive;
+  --font-me-up-font-1: 'New Rocker';
+  --font-me-up-font-2: 'Mogra';
+  --font-me-up-font-3: 'Germania One';
+  --font-me-up-font-4: 'Fontdiner Swanky';
+  --font-me-up-font-5: 'Akronim';
+  animation: animateFont 11s 1.4s infinite;
+}
+.font-me-up span:nth-of-type(5n + 4) {
+  font-family: 'New Rocker', cursive;
+  --font-me-up-font-1: 'Fontdiner Swanky';
+  --font-me-up-font-2: 'Mogra';
+  --font-me-up-font-3: 'Germania One';
+  --font-me-up-font-4: 'New Rocker';
+  --font-me-up-font-5: 'Akronim';
+  animation: animateFont 7s 2.1s infinite;
+}
+.font-me-up span:nth-of-type(5n + 5) {
+  font-family: 'Mogra', cursive;
+  --font-me-up-font-1: 'Germania One';
+  --font-me-up-font-2: 'New Rocker';
+  --font-me-up-font-3: 'Mogra';
+  --font-me-up-font-4: 'Akronim';
+  --font-me-up-font-5: 'Fontdiner Swanky';
+  animation: animateFont 5s 2.8s infinite;
+}
+
+.font-me-up.font-me-up-static span {
+  animation: none;
+}
+
+@keyframes animateFont {
+  0%,
+  19%,
+  100% {
+    font-family: 'Akronim', cursive;
+    font-family: var(--font-me-up-font-1), cursive;
+    color: var(--font-me-up-color-1);
+  }
+  20%,
+  39% {
+    font-family: 'Fontdiner Swanky', cursive;
+    font-family: var(--font-me-up-font-2), cursive;
+    color: var(--font-me-up-color-2);
+  }
+  40%,
+  59% {
+    font-family: 'Germania One', cursive;
+    font-family: var(--font-me-up-font-3), cursive;
+    color: var(--font-me-up-color-3);
+  }
+  60%,
+  79% {
+    font-family: 'New Rocker', cursive;
+    font-family: var(--font-me-up-font-4), cursive;
+    color: var(--font-me-up-color-4);
+  }
+  80%,
+  99% {
+    font-family: 'Mogra', cursive;
+    font-family: var(--font-me-up-font-5), cursive;
+    color: var(--font-me-up-color-5);
+  }
+}

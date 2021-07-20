@@ -1,0 +1,261 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  --font-me-up-color-1: rgba(29, 188, 29, 0.9);
+  --font-me-up-color-2: rgba(250, 248, 220, 0.9);
+  --font-me-up-color-3: rgba(96, 204, 50, 0.9);
+  --font-me-up-color-4: rgb(255, 208, 0);
+  --font-me-up-color-5: rgba(218, 227, 217, 0.9);
+}
+
+body {
+  background-image: url(https://static0.srcdn.com/wordpress/wp-content/uploads/2020/12/Loki-Time-Variance-Authority.jpg?q=50&fit=crop&w=740&h=370&dpr=1.5);
+  background-image: url(https://i.redd.it/dbybc3am8z471.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  width: 100vw;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  text-shadow: black 0.125em 0.125em 0.125em;
+}
+
+h1 {
+  font-size: 4rem;
+  text-align: center;
+  margin: 0;
+}
+
+h1 div {
+  display: inline-block;
+}
+
+header {
+  background: rgba(211, 121, 24, 0.9);
+  margin: 0.5rem auto;
+  /* width: max-content; */
+  max-width: 75rem;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  text-shadow: black 0.125em 0.125em 0.125em;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10rem;
+  border: 0.5rem solid rgb(177, 79, 8);
+  z-index: 1;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  list-style: none;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0;
+  margin: 0.5rem 0;
+  font-size: 2rem;
+  color: var(--font-me-up-color-2);
+}
+a {
+  color: var(--font-me-up-color-4);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--font-me-up-color-3);
+}
+a h1 {
+  color: white;
+}
+
+main,
+section {
+  margin: 1rem auto 50vh;
+  max-width: 80%;
+  color: rgba(218, 227, 217, 1);
+  border-radius: 2rem;
+  padding: 10rem 1rem 1rem;
+  font-family: 'Germania One', sans-serif;
+  font-size: 1.5rem;
+}
+
+h2 {
+  position: relative;
+  color: var(--font-me-up-color-4);
+  width: max-content;
+  font-size: 3rem;
+  text-shadow: black 0.125em 0.125em 0.25em;
+}
+
+h2::before {
+  display: block;
+  background-color: rgba(86, 184, 45, 0.9);
+  content: ' ';
+  border-radius: 2rem;
+  width: 100%;
+  height: 0.375em;
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  left: 0;
+  box-shadow: rgba(3, 75, 3, 0.9) 0.25rem 0.25rem 0.5rem;
+}
+
+h2.font-me-up span {
+  width: 0.6em;
+  text-align: center;
+  vertical-align: bottom;
+}
+
+.section-inner {
+  background: rgba(110, 61, 8, 0.38);
+  box-shadow: rgba(2, 52, 2, 0.9) 0.25em 0.25em 0.5em;
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+.loki-button {
+  /* style.css | http://127.0.0.1:5501/rjk-textbook/time/style.css?_cacheOverride=1626777553121 */
+
+  background: conic-gradient(
+    rgba(186, 105, 7, 0.9) 0%,
+    rgba(146, 91, 23, 0.9) 7%,
+    rgba(232, 132, 9, 0.9) 13%,
+    rgba(228, 132, 14, 0.9) 30%,
+    rgba(232, 132, 9, 0.9) 43%,
+    rgba(199, 112, 5, 0.9) 60%,
+    rgba(186, 105, 7, 0.9) 100%
+  );
+  --font-me-up-color-1: rgba(96, 204, 50, 0.9);
+  --font-me-up-color-2: rgb(255, 208, 0);
+  --font-me-up-color-3: rgba(218, 227, 217, 0.9);
+  --font-me-up-color-4: rgba(29, 188, 29, 0.9);
+  --font-me-up-color-5: rgba(250, 248, 220, 0.9);
+  height: 8rem;
+  width: 8rem;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  border-radius: 50%;
+  transition: transform 1s ease;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  box-shadow: black 0 0.5rem 0.5rem -0.25rem;
+  margin: 1rem auto;
+}
+
+.loki-button:hover {
+  transform: rotate(360deg);
+}
+
+pre {
+  font-size: 1rem;
+}
+
+#time-loop {
+  height: 400px;
+  width: 400px;
+}
+
+.centre {
+  margin: 0 auto;
+  width: max-content;
+  text-align: center;
+}
+
+picture {
+  height: 100%;
+  width: 100%;
+}
+
+picture.hidden {
+  display: none;
+}
+
+picture img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+}
+
+#stopwatch-display {
+  text-align: left;
+}
+
+.timer {
+  font-size: 10rem;
+}
+
+.timer button {
+  background: conic-gradient(
+    rgba(186, 105, 7, 0.9) 0%,
+    rgba(146, 91, 23, 0.9) 7%,
+    rgba(232, 132, 9, 0.9) 13%,
+    rgba(228, 132, 14, 0.9) 30%,
+    rgba(232, 132, 9, 0.9) 43%,
+    rgba(199, 112, 5, 0.9) 60%,
+    rgba(186, 105, 7, 0.9) 100%
+  );
+  border: none;
+  font-size: 5rem;
+  color: white;
+  border-radius: 2.5rem;
+  font-family: 'Germania One', sans-serif;
+  cursor: pointer;
+}
+.timer button:hover {
+  transform: scale(1.05) translateY(-0.5rem);
+}
+
+#countdown-display,
+#countdown-display-months {
+  max-width: 70vw;
+  font-size: 6rem;
+  background: rgba(146, 91, 23, 0.9);
+  border-radius: 2rem;
+  padding: 0.5rem;
+}
+
+#countdown-display-months {
+  font-size: 4rem;
+}
+
+section#timeout {
+  position: relative;
+}
+
+.variant-loki {
+  height: 400px;
+  width: auto;
+  position: absolute;
+  transition: transform 0.5s ease, background-color 0.5s ease,
+    box-shadow 0.5s ease;
+  background-color: transparent;
+  box-shadow: transparent 0 0 5rem 5rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.variant-loki:hover {
+  background: rgba(128, 0, 128, 0.3);
+  box-shadow: rgba(128, 0, 128, 0.3) 0 0 5rem 5rem;
+}
+
+.variant-loki.pruning {
+  transform: scale(0, 0);
+  background: purple;
+  box-shadow: purple 0 0 5rem 5rem;
+}

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TVA</title>
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/github-dark.min.css"
+    />
+    <link rel="stylesheet" href="./styles/font-me-up.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
+    <script src="./js/font-me-up.js"></script>
+  </head>
+  <body id="top">
+    <header>
+      <a href="#top">
+        <h1>
+          <div class="font-me-up">TIME</div>
+          <div>in JavaScript</div>
+        </h1>
+      </a>
+      <nav>
+        <ul>
+          <li>
+            <a class="font-me-up font-me-up-static" href="#set-interval"
+              >Loop</a
+            >
+          </li>
+          <li>
+            <a class="font-me-up font-me-up-static" href="#stopwatch"
+              >Stopwatch</a
+            >
+          </li>
+          <li>
+            <a class="font-me-up font-me-up-static" href="#date">Date</a>
+          </li>
+          <li>
+            <a class="font-me-up font-me-up-static" href="#clock">Clock</a>
+          </li>
+          <li>
+            <a class="font-me-up font-me-up-static" href="#countdown"
+              >Countdown</a
+            >
+          </li>
+          <li>
+            <a class="font-me-up font-me-up-static" href="#timeout">Timeout</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="section-inner">
+        <p>Hey y'all! Here at the TVA, we control all of time.</p>
+        <p>With JavaScript, it's really easy!</p>
+      </div>
+      <a class="loki-button font-me-up" href="#set-interval">Next</a>
+    </main>
+    <section id="set-interval">
+      <h2 class="font-me-up font-me-up-static">Loops with setInterval</h2>
+      <div class="section-inner">
+        <p>Don't forget to put your Variants in a time loop! By using</p>
+        <pre><code lang="javascript">setInterval(callback, timeout)</code></pre>
+        <p>
+          we can loop anything we want. Below, for instance, we're cycling
+          through showing four different GIFs.
+        </p>
+        <div id="time-loop" class="centre">
+          <picture class="hidden" title="Loki"
+            ><img
+              src="https://media.giphy.com/media/CIayGxFu0KjRAFtn6b/giphy.gif"
+              alt="Loki"
+          /></picture>
+          <picture class="hidden" title="Mobius"
+            ><img
+              src="https://media.giphy.com/media/3DU3CZq3HIWSpM03HO/giphy.gif"
+              alt="Mobius"
+          /></picture>
+          <picture title="Miss Minutes"
+            ><img
+              src="https://media.giphy.com/media/gmdKBCklQ7ElxAN7oH/giphy.gif"
+              alt="Miss Minutes"
+          /></picture>
+          <picture class="hidden" title="Sylvie"
+            ><img
+              src="https://media.giphy.com/media/I2NbVzYSt4jIvswpfQ/giphy.gif"
+              alt="Sylvie"
+          /></picture>
+        </div>
+        <p>This works with the following code:</p>
+        <pre><code data-src="./js/time-loop.js" lang="javascript"></code></pre>
+      </div>
+      <script src="./js/time-loop.js"></script>
+      <a class="loki-button font-me-up" href="#stopwatch">Next</a>
+    </section>
+    <section id="stopwatch">
+      <h2 class="font-me-up font-me-up-static">Stopwatch using setInterval</h2>
+      <p>
+        Sometimes, we need to time things just right. Knowing how long something
+        takes is helpful.
+      </p>
+      <div class="centre timer">
+        <div id="stopwatch-display">00:00.000</div>
+        <button id="stopwatch-start">Start Timer</button>
+        <button id="stopwatch-stop">Stop Timer</button>
+      </div>
+      <p>This works with the following code:</p>
+      <pre><code data-src="./js/stopwatch.js" lang="javascript"></code></pre>
+      <script src="./js/stopwatch.js"></script>
+      <a class="loki-button font-me-up" href="#date">Next</a>
+    </section>
+    <section id="date">
+      <h2 class="font-me-up font-me-up-static">Date</h2>
+      <div class="section-inner">
+        <p>
+          In all seriousness, it takes a bit of work to get up to speed with
+          Date in JavaScript. Documentation is great, and the specification is
+          well-aligned but not perfect. Here's what you need to know today:
+        </p>
+        <ol>
+          <li>
+            <p>You can construct a date with</p>
+            <pre><code lang="javascript">new Date(year, month, day)</code></pre>
+          </li>
+          <li>
+            <p>January is month zero</p>
+            <pre><code lang="javascript">new Date(2000, 0, 1)</code></pre>
+            <p>For 1st January 2000, it's 2000, 0, 1.</p>
+          </li>
+          <li>
+            <p>You can also construct a date with</p>
+            <pre><code lang="javascript">new Date(milliseconds)</code></pre>
+            <p>This is useful when comparing dates.</p>
+          </li>
+          <li>
+            <p>Time zones matter!</p>
+          </li>
+          <li>
+            <p>Time started in 1970. I'm not kidding.</p>
+            <pre><code lang="javascript">new Date(0)</code></pre>
+            <p>This is Thursday January 1st 1970 at midnight in Greenwich.</p>
+          </li>
+          <li>
+            <p>You can compare dates as a boolean check</p>
+            <pre><code lang="javascript">myBirthday > yourBirthday</code></pre>
+            <p>
+              In such a case, the date with the larger number of milliseconds is
+              the greater. That means the future is greater than the past. The
+              past is lesser than the future. Don't tell the Greatest Generation
+              that JavaScript disagrees with them.
+            </p>
+          </li>
+          <li>
+            <p>You can subtract dates to find time remaining</p>
+            <pre><code lang="javascript">const diff = nextHoliday - currentTime
+const timeToGo = new Date(diff)</code></pre>
+            <p>
+              In such a case, <code>timeToGo</code> would be an actual date,
+              with a year, month, day etc. You have to remember this when
+              displaying to the user. If there's 1 day and 3 hours to go, the
+              value of <code>timeToGo</code> will be 2nd January 1970 at 3am in
+              Greenwich.
+            </p>
+          </li>
+        </ol>
+      </div>
+      <a class="loki-button font-me-up" href="#clock">Next</a>
+    </section>
+    <section id="clock">
+      <h2 class="font-me-up font-me-up-static">Clock</h2>
+      <p>We may want to show a big clock so we know what time it is.</p>
+      <div class="centre timer">
+        <div id="clock-display">00:00.000</div>
+      </div>
+      <p>This works with the following code:</p>
+      <pre><code data-src="./js/clock.js" lang="javascript"></code></pre>
+      <script src="./js/clock.js"></script>
+      <a class="loki-button font-me-up" href="#countdown">Next</a>
+    </section>
+    <section id="countdown">
+      <h2 class="font-me-up font-me-up-static">Countdown</h2>
+      <div class="section-inner">
+        <p>
+          Countdowns are great for when you're running out of time, or when
+          time's running out on you. Maybe you're tracking your next event.
+          Maybe you're waiting on someone to arrive to fix everything. Maybe
+          he's a caped hero, a doctor, a master of the mystical arts, or all of
+          the above.
+        </p>
+        <div class="centre timer">
+          <div id="countdown-display">
+            125 days, 19 hours, 14 minutes and 3 seconds
+          </div>
+        </div>
+        <p>or did you want that in months?</p>
+        <div class="centre timer">
+          <div id="countdown-display-months">Several months</div>
+        </div>
+        <p>This works with the following code:</p>
+        <pre><code data-src="./js/countdown.js" lang="javascript"></code></pre>
+      </div>
+      <script src="./js/countdown.js"></script>
+      <a class="loki-button font-me-up" href="#timeout">Next</a>
+    </section>
+    <section id="timeout">
+      <h2 class="font-me-up font-me-up-static">setTimeout</h2>
+      <div class="section-inner">
+        <p>
+          setTimeout is setInterval's variant, and works in almost the same way,
+          save for one important distinction: it doesn't repeat.
+        </p>
+        <p>
+          What's the point of that? Delaying is useful for a lot of reasons. We
+          might want to wait a second before enabling an interactive option. We
+          might choose to display something for only a few seconds.
+        </p>
+        <p>
+          You can also animate removal of elements in an interesting way by
+          delaying the removal. For instance, here, when you click a Loki, he
+          will start to scale down to a point. We won't remove the element until
+          the disappearing is finished.
+        </p>
+        <div class="centre timer">
+          <button id="timeout-start">Start pruning Lokis</button>
+        </div>
+        <p>This works with the following code:</p>
+        <pre><code data-src="./js/timeout.js" lang="javascript"></code></pre>
+      </div>
+      <script src="./js/timeout.js"></script>
+    </section>
+    <script src="./js/code-handling.js"></script>
+  </body>
+</html>
