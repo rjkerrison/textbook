@@ -10,14 +10,18 @@ function startTimeout() {
 }
 
 function showLoki() {
+  // Create a loki variant
   const loki = document.createElement('img')
   loki.classList.add('variant-loki')
-
-  timeoutSection.appendChild(loki)
-  // I do not recommend styling things directly in JS like this
-  loki.style.top = Math.random() * timeoutSection.clientHeight + 'px'
-  loki.style.left = Math.random() * timeoutSection.clientWidth + 'px'
   loki.src = './loki-tva.png'
+  // Append him to the document
+  timeoutSection.appendChild(loki)
+  // We want to place Loki randomly in the viewport
+  const gridHeight = window.innerHeight - loki.clientHeight
+  const gridWidth = window.innerWidth - loki.clientWidth
+  // I do not recommend styling things directly in JS like this
+  loki.style.top = `${Math.random() * gridHeight}px`
+  loki.style.left = `${Math.random() * gridWidth}px`
 
   loki.addEventListener('click', function () {
     loki.classList.add('pruning')

@@ -17,7 +17,7 @@
   <body id="top">
     <header>
       <a href="#top">
-        <h1>
+        <h1 title="For all time. Always.">
           <div class="font-me-up">TIME</div>
           <div>in JavaScript</div>
         </h1>
@@ -126,8 +126,26 @@
           </li>
           <li>
             <p>January is month zero</p>
-            <pre><code lang="javascript">new Date(2000, 0, 1)</code></pre>
+            <pre><code lang="javascript">const newYearsDay = new Date(2000, 0, 1)</code></pre>
             <p>For 1st January 2000, it's 2000, 0, 1.</p>
+          </li>
+          <li>
+            <p>You can display dates through a few different methods</p>
+            <pre><code lang="javascript"
+>newYearsDay.getFullYear() // 2000
+newYearsDay.getMonth() // 0
+newYearsDay.getDay() // 1
+newYearsDay.toLocaleString() // "01/01/2000, 00:00:00"
+newYearsDay.toDateString() // "Sat Jan 01 2000"
+newYearsDay.toGMTString() // "Sat, 01 Jan 2000 00:00:00 GMT"
+newYearsDay.toISOString() // "2000-01-01T00:00:00.000Z"
+newYearsDay.toLocaleDateString() // "01/01/2000"
+newYearsDay.toUTCString() // "Sat, 01 Jan 2000 00:00:00 GMT"</code></pre>
+            <p>
+              Often, you'll want to use the numbers and convert them to strings
+              yourself. This is the case for our
+              <a href="#clock">clock</a> below.
+            </p>
           </li>
           <li>
             <p>You can also construct a date with</p>
@@ -136,10 +154,22 @@
           </li>
           <li>
             <p>Time zones matter!</p>
+            <pre><code>const date1 = new Date('August 19, 1975 23:15:30 GMT+07:00')
+              const date2 = new Date('August 19, 1975 23:15:30 GMT-02:00')
+              const millisecondsInOneHour = 60 * 60 * 1000
+              console.log((date2 - date1) / millisecondsInOneHour);
+              // expected output: 9</code></pre>
+            <p>
+              You can also get the user's current time zone offset in minutes.
+              This is the difference between the time elapsed between the date
+              evaluated in UTC and evaluated in the current timezone.
+            </p>
+            <pre><code>new Date().getTimezoneOffset() // 0 in London in winter, -60 in summer, -60 in France in winter, -120 in France in summer</code></pre>
           </li>
           <li>
             <p>Time started in 1970. I'm not kidding.</p>
-            <pre><code lang="javascript">new Date(0)</code></pre>
+            <pre><code lang="javascript">const dawnOfTime = new Date(0)
+dawnOfTime.getFullYear() // 1970</code></pre>
             <p>This is Thursday January 1st 1970 at midnight in Greenwich.</p>
           </li>
           <li>

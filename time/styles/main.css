@@ -57,13 +57,13 @@ header {
 nav ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 3rem;
+  gap: 1rem 2.5rem;
   list-style: none;
   justify-content: space-around;
   align-items: center;
   padding: 0;
   margin: 0.5rem 0;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: var(--font-me-up-color-2);
 }
 a {
@@ -240,7 +240,7 @@ section#timeout {
 .variant-loki {
   height: 400px;
   width: auto;
-  position: absolute;
+  position: fixed;
   transition: transform 0.5s ease, background-color 0.5s ease,
     box-shadow 0.5s ease;
   background-color: transparent;
