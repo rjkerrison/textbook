@@ -111,18 +111,8 @@
 &gt;&lt;/audio&gt;
 &lt;button data-time="102"&gt;English wikipedia stats&lt;/button&gt;
 &lt;button data-time="210"&gt;Signing off&lt;/button&gt;</code></pre>
-        <pre><code lang="javascript">const podcast = document.querySelector('audio#podcast')
-const playPodcastFrom = (timeInSeconds) => {
-  podcast.currentTime = timeInSeconds
-  podcast.play()
-}
-const setupButton = (button) =>
-  button.addEventListener('click', () =>
-    playPodcastFrom(button.dataset.time)
-  )
-
-const buttons = document.querySelectorAll('button')
-buttons.forEach(setupButton)</code></pre>
+        <pre><code lang="javascript" data-src="./podcast.js"></code></pre>
+        <script src="./podcast.js"></script>
         <p>
           Notice how the HTML is responsible for the exact behaviour of the
           button, identifying the number of seconds to which we want to jump.
