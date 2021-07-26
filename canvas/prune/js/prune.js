@@ -1,5 +1,4 @@
-// Elements? Where we're going, we definitely need elements.
-const clippingSection = document.querySelector('section#clipping')
+const container = document.querySelector('main')
 const pruneButton = document.querySelector('button#prune-start')
 
 const lokiImage = new Image()
@@ -10,13 +9,13 @@ let isPruning = false
 function togglePruning() {
   isPruning = !isPruning
   if (isPruning) {
-    pruneButton.textContent = 'End pruning'
-    setTimeout(showLoki, 500)
+    pruneButton.textContent = 'End'
+    setTimeout(showLoki, 250)
   } else {
     document.querySelectorAll('.variant-loki').forEach((x) => {
-      clippingSection.removeChild(x)
+      container.removeChild(x)
     })
-    pruneButton.textContent = 'Start pruning Lokis'
+    pruneButton.textContent = 'Start'
   }
 }
 
@@ -24,7 +23,7 @@ function createCanvas() {
   // Create a canvas
   const canvas = document.createElement('canvas')
   canvas.classList.add('variant-loki')
-  clippingSection.appendChild(canvas)
+  container.appendChild(canvas)
 
   canvas.width = 225
   canvas.height = 600
@@ -59,7 +58,7 @@ function showLoki() {
 
   const showLokiImage = () => attachImageToCanvas(lokiContext)
 
-  const removeCanvas = () => clippingSection.removeChild(element)
+  const removeCanvas = () => container.removeChild(element)
   const pruneLokiCanvas = getPruneClickListener({
     context: lokiContext,
     left,
@@ -189,7 +188,7 @@ function drawDoor(heightRatio, ctx, callback) {
 let isYellow = false
 
 function drawPruningEffect(x, y, radius, ctx) {
-  isYellow = Math.random() > 0.05 ? isYellow : !isYellow
+  isYellow = Math.random() > 0.1 ? isYellow : !isYellow
   const opacity = Math.min(1, 0.1 + radius / (ctx.canvas.width * 4))
   if (isYellow) {
     ctx.fillStyle = `rgba(158,157,15,${opacity})`
@@ -202,24 +201,63 @@ function drawPruningEffect(x, y, radius, ctx) {
   ctx.fill()
 }
 
-const pruneTime = 2000
-const nextStepTimeout = 500
+const pruneTime = 2500
+const nextStepTimeout = 950
+
+let score = 0
+const scoreDisplay = document.querySelector('#score-display')
+function gainScore(increase) {
+  score += increase
+  scoreDisplay.textContent = score.toString().padStart(6, '0')
+}
+
+const updatePrune = (x, y, initialRadius, context) => {
+  const container = context.canvas.parentElement
+  if (!container || !container.contains(context.canvas)) {
+    return
+  }
+  if (x < 0 || x > context.canvas.width) {
+    return
+  }
+  if (y < 0 || y > context.canvas.height) {
+    return
+  }
+  const radius = Math.max(initialRadius * 1.05, initialRadius + 2)
+
+  drawPruningEffect(x, y, Math.floor(radius), context)
+  clipInsideCircle(
+    x,
+    y,
+    Math.max(Math.floor(radius / 2), Math.floor(radius - 25), 1),
+    context
+  )
+
+  let upX = x - Math.random() * radius
+  let newY = y + (Math.random() - 0.5) * radius
+  let upY = y - Math.random() * radius
+  let newX = x + (Math.random() - 0.5) * radius
+  setTimeout(() => {
+    updatePrune(upX, newY, radius, context)
+    updatePrune(newX, upY, radius, context)
+  }, 30)
+}
 
 function getPruneClickListener({ left, top, removeCanvas, nextStep, context }) {
   const pruneClickListener = ({ clientX, clientY }) => {
-    const x = clientX - left
-    const y = clientY - top
+    let x = clientX - left
+    let y = clientY - top
 
     let radius = 2
     context.globalCompositeOperation = 'source-atop'
-    const pruneInterval = setInterval(() => {
-      radius *= 1.15
+    const pruneInterval = setTimeout(() => {
+      updatePrune(x, y, radius, context)
+      radius += 4
+      x += (Math.random() - 0.5) * radius
+      y += (Math.random() - 0.5) * radius
       // context.globalCompositeOperation = 'source-over'
       // context.clearRect(0, 0, context.canvas.width, context.canvas.height)
       // attachImageToCanvas(context)
-      drawPruningEffect(x, y, Math.floor(radius), context)
-      clipInsideCircle(x, y, Math.max(Math.floor(radius - 25), 1), context)
-    }, 30)
+    }, 15)
     setTimeout(() => {
       clearInterval(pruneInterval)
       removeCanvas()

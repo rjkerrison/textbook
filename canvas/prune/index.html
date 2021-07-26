@@ -17,62 +17,24 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
     <script src="./js/font-me-up.js"></script>
   </head>
-  <body id="top">
+  <body>
     <header>
-      <a href="#top">
-        <h1 title="For all time. Always.">
-          <div class="font-me-up">Canvas</div>
-          <div>in JavaScript and HTML</div>
-        </h1>
-      </a>
-      <nav>
-        <ul>
-          <li>
-            <a class="font-me-up font-me-up-static" href="#draw-image"
-              >Draw Image</a
-            >
-          </li>
-          <li>
-            <a class="font-me-up font-me-up-static" href="#clipping"
-              >Clipping</a
-            >
-          </li>
-        </ul>
-      </nav>
+      <h1 title="For all time. Always.">
+        <div>Pruning</div>
+        <div class="font-me-up">Loki</div>
+      </h1>
+      <p class="centre timer">Score: <span id="score-display">000000</span></p>
     </header>
     <main>
       <div class="section-inner">
         <p>
           Hey y'all! Here at the TVA, we have the greatest power in the
-          universe: JavaScript.
-        </p>
-        <p>
-          Along with <code>&lt;canvas&gt;</code>, we can create some very cool
-          visuals.
+          universe: JavaScript. And with <code>&lt;canvas&gt;</code>, we control
+          the timeline.
         </p>
       </div>
-      <a class="loki-button font-me-up" href="#clipping">Next</a>
-    </main>
-    <section id="clipping">
-      <h2 class="font-me-up font-me-up-static">Clipping</h2>
-      <div class="section-inner">
-        <p>
-          We have the advanced canvas feature of <code>context.clip()</code>.
-          With it, we can hide parts of a canvas drawing.
-        </p>
-        <p>
-          We use this here to "prune" Loki, starting from the user's click
-          point.
-        </p>
-        <p>Give it a go!</p>
-        <div class="centre timer">
-          <button id="prune-start">Start pruning Lokis</button>
-        </div>
-        <p>This works with the following code:</p>
-        <pre><code data-src="./js/prune.js" lang="javascript"></code></pre>
-      </div>
+      <button class="loki-button font-me-up" id="prune-start">Start</button>
       <script src="./js/prune.js"></script>
-    </section>
-    <script src="../shared/js/code-handling.js"></script>
+    </main>
   </body>
 </html>

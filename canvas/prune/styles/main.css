@@ -17,8 +17,10 @@ body {
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
-  min-height: 100vh;
+  height: 100vh;
   width: 100vw;
+  margin: 0;
+  overflow: hidden;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-shadow: black 0.125em 0.125em 0.125em;
 }
@@ -35,15 +37,17 @@ h1 div {
 
 header {
   background: rgba(211, 121, 24, 0.9);
-  margin: 0.5rem auto;
+  margin: 0 auto;
   /* width: max-content; */
   max-width: 75rem;
   border-radius: 2rem;
   padding: 0.5rem;
   text-shadow: black 0.125em 0.125em 0.125em;
   color: white;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Germania One', sans-serif;
   position: fixed;
+  display: flex;
+  justify-content: space-between;
   top: 0;
   left: 0;
   right: 0;
@@ -94,7 +98,7 @@ h2 {
   text-shadow: black 0.125em 0.125em 0.25em;
 }
 
-h2::before {
+h1 div::before {
   display: block;
   background-color: rgba(86, 184, 45, 0.9);
   content: ' ';
@@ -108,10 +112,14 @@ h2::before {
   box-shadow: rgba(3, 75, 3, 0.9) 0.25rem 0.25rem 0.5rem;
 }
 
-h2.font-me-up span {
+h1 .font-me-up span {
   width: 0.6em;
   text-align: center;
   vertical-align: bottom;
+}
+
+header p {
+  margin: 0;
 }
 
 .section-inner {
@@ -123,7 +131,28 @@ h2.font-me-up span {
 
 .loki-button {
   /* style.css | http://127.0.0.1:5501/rjk-textbook/time/style.css?_cacheOverride=1626777553121 */
+  --font-me-up-color-1: rgba(96, 204, 50, 0.9);
+  --font-me-up-color-2: rgb(255, 208, 0);
+  --font-me-up-color-3: rgba(218, 227, 217, 0.9);
+  --font-me-up-color-4: rgba(29, 188, 29, 0.9);
+  --font-me-up-color-5: rgba(250, 248, 220, 0.9);
+  position: relative;
+  height: 20rem;
+  width: 20rem;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  border-radius: 50%;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  box-shadow: black 0 0.5rem 0.5rem -0.25rem;
+  margin: 1rem auto;
+}
 
+.loki-button::before {
   background: conic-gradient(
     rgba(186, 105, 7, 0.9) 0%,
     rgba(146, 91, 23, 0.9) 7%,
@@ -133,29 +162,23 @@ h2.font-me-up span {
     rgba(199, 112, 5, 0.9) 60%,
     rgba(186, 105, 7, 0.9) 100%
   );
-  --font-me-up-color-1: rgba(96, 204, 50, 0.9);
-  --font-me-up-color-2: rgb(255, 208, 0);
-  --font-me-up-color-3: rgba(218, 227, 217, 0.9);
-  --font-me-up-color-4: rgba(29, 188, 29, 0.9);
-  --font-me-up-color-5: rgba(250, 248, 220, 0.9);
-  height: 8rem;
-  width: 8rem;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 3rem;
   border-radius: 50%;
-  transition: transform 1s ease;
-  text-align: center;
-  text-decoration: none;
-  color: white;
-  box-shadow: black 0 0.5rem 0.5rem -0.25rem;
-  margin: 1rem auto;
+  content: ' ';
+  display: block;
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+
+  animation: time 60s 0s infinite steps(60);
 }
 
-.loki-button:hover {
-  transform: rotate(360deg);
+@keyframes time {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 pre {
@@ -165,12 +188,6 @@ pre {
 #time-loop {
   height: 400px;
   width: 400px;
-}
-
-.centre {
-  margin: 0 auto;
-  width: max-content;
-  text-align: center;
 }
 
 picture {
@@ -194,27 +211,19 @@ picture img {
 }
 
 .timer {
-  font-size: 10rem;
+  font-size: 5rem;
 }
 
-.timer button {
-  background: conic-gradient(
-    rgba(186, 105, 7, 0.9) 0%,
-    rgba(146, 91, 23, 0.9) 7%,
-    rgba(232, 132, 9, 0.9) 13%,
-    rgba(228, 132, 14, 0.9) 30%,
-    rgba(232, 132, 9, 0.9) 43%,
-    rgba(199, 112, 5, 0.9) 60%,
-    rgba(186, 105, 7, 0.9) 100%
-  );
+button {
   border: none;
+  background-color: transparent;
   font-size: 5rem;
   color: white;
   border-radius: 2.5rem;
   font-family: 'Germania One', sans-serif;
   cursor: pointer;
 }
-.timer button:hover {
+button:hover {
   transform: scale(1.05) translateY(-0.5rem);
 }
 
@@ -238,17 +247,13 @@ section#timeout {
 canvas.variant-loki {
   height: auto;
   width: auto;
-}
-
-.variant-loki {
-  height: 400px;
-  width: auto;
   position: fixed;
   transition: transform 0.5s ease, background-color 0.5s ease,
     box-shadow 0.5s ease;
   background-color: transparent;
   box-shadow: transparent 0 0 5rem 5rem;
   cursor: pointer;
+  z-index: 2;
 }
 
 .variant-loki:hover {
