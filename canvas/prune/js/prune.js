@@ -1,8 +1,21 @@
 const container = document.querySelector('main')
 const pruneButton = document.querySelector('button#prune-start')
 
-const lokiImage = new Image()
-lokiImage.src = './loki-tva.png'
+function loadImage(src) {
+  const image = new Image()
+  image.src = src
+  return image
+}
+
+const lokiImages = [
+  loadImage('./loki-tva.png'),
+  loadImage('./loki-tva-2.png'),
+  loadImage('./kid-loki.png'),
+  loadImage('./boastful-loki.png'),
+  loadImage('./sylvie.png'),
+  loadImage('./alligator-loki.png'),
+  loadImage('./croki.jpg'),
+]
 
 let isPruning = false
 
@@ -19,14 +32,25 @@ function togglePruning() {
   }
 }
 
-function createCanvas() {
+function createCanvas(width, height) {
   // Create a canvas
   const canvas = document.createElement('canvas')
   canvas.classList.add('variant-loki')
   container.appendChild(canvas)
 
-  canvas.width = 225
-  canvas.height = 600
+  if (height > 500) {
+    const ratio = height / 500
+    height = Math.floor(height / ratio)
+    width = Math.floor(width / ratio)
+  }
+  if (width > 500) {
+    const ratio = width / 500
+    height = Math.floor(height / ratio)
+    width = Math.floor(width / ratio)
+  }
+
+  canvas.width = width
+  canvas.height = height
   const gridHeight = window.innerHeight - canvas.height
   const gridWidth = window.innerWidth - canvas.width
   const left = Math.floor(Math.random() * gridWidth)
@@ -46,17 +70,22 @@ function createCanvas() {
 const attachSingleFireEvent = (element, type, handler) => {
   const handlerWithRemoval = (e) => {
     handler(e)
-    element.removeEventListener(type, handlerWithRemoval)
+    //element.removeEventListener(type, handlerWithRemoval)
   }
   element.addEventListener(type, handlerWithRemoval)
 }
 
 function showLoki() {
-  const { left, top, element } = createCanvas()
+  const chosenImage = randomChoice(lokiImages)
+
+  const { left, top, element } = createCanvas(
+    chosenImage.width,
+    chosenImage.height
+  )
   const lokiContext = element.getContext('2d')
   const doorContext = element.getContext('2d')
 
-  const showLokiImage = () => attachImageToCanvas(lokiContext)
+  const showLokiImage = () => attachImageToCanvas(chosenImage, lokiContext)
 
   const removeCanvas = () => container.removeChild(element)
   const pruneLokiCanvas = getPruneClickListener({
@@ -119,17 +148,17 @@ const closeDoorStep = (
 function showDoor(context, callback, completeCallback) {
   openDoorInSteps(context, callback)
   const closeDoorInStepsWithContext = () => {
-    closeDoorInSteps(context, callback, completeCallback)
+    closeDoorInSteps(context, callback, () => {})
   }
+  completeCallback()
   setTimeout(closeDoorInStepsWithContext, showDoorTime * 2)
 }
 const attachLoadedImageToCanvas = (image, context) => {
-  const ratio = Math.floor(
-    Math.max(
-      image.width / context.canvas.width,
-      image.height / context.canvas.height
-    )
+  const ratio = Math.max(
+    image.width / context.canvas.width,
+    image.height / context.canvas.height
   )
+
   context.drawImage(
     image,
     0,
@@ -139,12 +168,12 @@ const attachLoadedImageToCanvas = (image, context) => {
   )
 }
 
-function attachImageToCanvas(context) {
-  const callback = () => attachLoadedImageToCanvas(lokiImage, context)
-  if (lokiImage.complete) {
+function attachImageToCanvas(chosenImage, context) {
+  const callback = () => attachLoadedImageToCanvas(chosenImage, context)
+  if (chosenImage.complete) {
     callback()
   } else {
-    lokiImage.addEventListener('load', callback)
+    chosenImage.addEventListener('load', callback)
   }
 }
 
@@ -167,34 +196,38 @@ function clipInsideCircle(x, y, radius, ctx) {
   ctx.restore()
 }
 
-function setClipContext(createClipPath, ctx) {
-  let imagePath = new Path2D()
-  createClipPath(imagePath)
-  ctx.clip(imagePath)
-}
-
 function drawDoor(heightRatio, ctx, callback) {
-  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+  window.requestAnimationFrame(() =>
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+  )
   const height = ctx.canvas.height * heightRatio
   const top = (ctx.canvas.height * (1 - heightRatio)) / 2
   const fillStyle = `rgba(238,177,85,0.7)`
-  ctx.fillStyle = fillStyle
-  ctx.fillRect(0, top, ctx.canvas.width, height)
-  if (callback) {
-    callback()
-  }
+  window.requestAnimationFrame(() => {
+    ctx.globalCompositeOperation = 'source-over'
+    ctx.fillStyle = fillStyle
+    ctx.fillRect(0, top, ctx.canvas.width, height)
+    if (callback) {
+      callback()
+    }
+  })
 }
 
-let isYellow = false
+const fillStyles = (opacity) => [
+  `rgba(158,157,15,${opacity})`,
+  `rgba(128,97,185,${opacity})`,
+  `rgba(28,197,85,${opacity})`,
+  `rgba(128,207,185,${opacity})`,
+  `rgba(108,47,215,${opacity})`,
+]
+
+const randomChoice = (arr) => arr[Math.floor(arr.length * Math.random())]
 
 function drawPruningEffect(x, y, radius, ctx) {
-  isYellow = Math.random() > 0.1 ? isYellow : !isYellow
-  const opacity = Math.min(1, 0.1 + radius / (ctx.canvas.width * 4))
-  if (isYellow) {
-    ctx.fillStyle = `rgba(158,157,15,${opacity})`
-  } else {
-    ctx.fillStyle = `rgba(128,97,185,${opacity})`
-  }
+  const opacity = Math.min(0.7, 0.1 + radius / (ctx.canvas.width * 4))
+
+  ctx.fillStyle = randomChoice(fillStyles(opacity))
+
   ctx.beginPath()
   ctx.arc(x, y, radius, 0, 2 * Math.PI, true)
   ctx.closePath()
@@ -211,58 +244,102 @@ function gainScore(increase) {
   scoreDisplay.textContent = score.toString().padStart(6, '0')
 }
 
-const updatePrune = (x, y, initialRadius, context) => {
-  const container = context.canvas.parentElement
-  if (!container || !container.contains(context.canvas)) {
-    return
+const getNextCoordinates = ({ x, y }, r) => {
+  return {
+    x: x + (Math.random() - 0.5) * r,
+    y: y + (Math.random() - 0.5) * r,
   }
-  if (x < 0 || x > context.canvas.width) {
-    return
-  }
-  if (y < 0 || y > context.canvas.height) {
-    return
-  }
-  const radius = Math.max(initialRadius * 1.05, initialRadius + 2)
+}
 
-  drawPruningEffect(x, y, Math.floor(radius), context)
-  clipInsideCircle(
-    x,
-    y,
-    Math.max(Math.floor(radius / 2), Math.floor(radius - 25), 1),
-    context
-  )
+const startPruningAnimation = (initialCoordinate, initialRadius, context) => {
+  let isAnimating = true
+  const startTime = Date.now()
+  const millisecondsBetweenStages = 70
+  const coordinatesList = [initialCoordinate]
 
-  let upX = x - Math.random() * radius
-  let newY = y + (Math.random() - 0.5) * radius
-  let upY = y - Math.random() * radius
-  let newX = x + (Math.random() - 0.5) * radius
-  setTimeout(() => {
-    updatePrune(upX, newY, radius, context)
-    updatePrune(newX, upY, radius, context)
-  }, 30)
+  const addNextCoordinates = (radius) => {
+    const randomCoordinates =
+      coordinatesList[Math.floor(Math.random() * coordinatesList.length)]
+    coordinatesList.push(getNextCoordinates(randomCoordinates, radius))
+  }
+
+  const animatePruningStep = () => {
+    const elapsedMilliseconds = Date.now() - startTime
+    const elapsedStages = Math.floor(
+      elapsedMilliseconds / millisecondsBetweenStages
+    )
+
+    if (!isAnimating) {
+      console.log('animation was cancelled')
+      return
+    }
+    if (elapsedStages > 35) {
+      console.log('limit reached: ' + coordinatesList.length)
+      return
+    }
+
+    const oldRadius =
+      initialRadius *
+      Math.pow(1.16, elapsedMilliseconds / millisecondsBetweenStages - 3)
+    const newRadius =
+      initialRadius *
+      Math.pow(1.16, elapsedMilliseconds / millisecondsBetweenStages)
+
+    while (elapsedStages > coordinatesList.length) {
+      gainScore(elapsedStages * 5)
+      addNextCoordinates(newRadius)
+    }
+
+    coordinatesList.forEach(({ x, y }) => {
+      context.globalCompositeOperation = 'source-atop'
+      drawPruningEffect(x, y, Math.floor(newRadius), context)
+      clipInsideCircle(x, y, Math.floor(oldRadius), context)
+    })
+
+    setTimeout(
+      () => window.requestAnimationFrame(animatePruningStep),
+      millisecondsBetweenStages / 5
+    )
+  }
+
+  const cancelAnimation = () => {
+    console.log('cancelling animation')
+    isAnimating = false
+  }
+
+  console.log('starting animation')
+  window.requestAnimationFrame(animatePruningStep)
+
+  return {
+    cancelAnimation,
+  }
 }
 
 function getPruneClickListener({ left, top, removeCanvas, nextStep, context }) {
+  let isFirstClick = true
+
   const pruneClickListener = ({ clientX, clientY }) => {
     let x = clientX - left
     let y = clientY - top
+    const initialRadius = 5
 
-    let radius = 2
-    context.globalCompositeOperation = 'source-atop'
-    const pruneInterval = setTimeout(() => {
-      updatePrune(x, y, radius, context)
-      radius += 4
-      x += (Math.random() - 0.5) * radius
-      y += (Math.random() - 0.5) * radius
-      // context.globalCompositeOperation = 'source-over'
-      // context.clearRect(0, 0, context.canvas.width, context.canvas.height)
-      // attachImageToCanvas(context)
-    }, 15)
+    const { cancelAnimation } = startPruningAnimation(
+      { x, y },
+      initialRadius,
+      context
+    )
+
+    const shouldRemoveCanvas = isFirstClick
     setTimeout(() => {
-      clearInterval(pruneInterval)
-      removeCanvas()
+      if (shouldRemoveCanvas) {
+        removeCanvas()
+      }
+      cancelAnimation()
     }, pruneTime)
-    setTimeout(nextStep, nextStepTimeout)
+    if (isFirstClick) {
+      setTimeout(nextStep, nextStepTimeout)
+    }
+    isFirstClick = false
   }
   return pruneClickListener
 }
