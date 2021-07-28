@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="keywords" content="html,javascript,tutorial,loki,tva" />
     <title>
-      Learning Canvas in JavaScript and HTML at the TVA | RJK Textbook
+      Pruning Loki Browser Game | Learning Canvas in JavaScript and HTML at the
+      TVA | RJK Textbook
     </title>
     <link
       rel="stylesheet"
       href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/github-dark.min.css"
     />
     <link rel="stylesheet" href="../../../shared/styles/font-me-up.css" />
-    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/shared.css" />
     <link rel="stylesheet" href="../styles/learn.css" />
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
     <script src="../../../shared/js/font-me-up.js"></script>
@@ -21,28 +22,202 @@
   </head>
   <body>
     <header>
-      <h1 title="For all time. Always.">
-        <div>Pruning</div>
-        <div class="font-me-up">Loki</div>
-      </h1>
+      <div class="flex-row">
+        <button class="nav-toggle">^</button>
+        <div class="flex-row">
+          <h1 title="For all time. Always.">
+            <div>Pruning</div>
+            <div class="font-me-up">Loki</div>
+          </h1>
+
+          <p class="lg-only">Want to <a href="../">play the game</a>?</p>
+        </div>
+      </div>
       <nav>
-        <p class="centre timer">Want to <a href="../">play the game</a>?</p>
+        <p class="sm-only"><a href="../">Play the game</a></p>
+        <p class="sm-only">Sections:</p>
+        <ul class="flex-row small-screen-flex-column">
+          <li>
+            <a class="font-me-up font-me-up-static" href="#initialising"
+              >Initialising</a
+            >
+          </li>
+          <li>
+            <a class="font-me-up font-me-up-static" href="#game"
+              >Game mechanics</a
+            >
+          </li>
+          <li>
+            <a class="font-me-up font-me-up-static" href="#canvas">Canvas</a>
+          </li>
+          <li>
+            <a class="font-me-up font-me-up-static" href="#animation"
+              >Animation</a
+            >
+          </li>
+          <li>
+            <a class="font-me-up font-me-up-static" href="#click">Click</a>
+          </li>
+          <li>
+            <a class="font-me-up font-me-up-static" href="#doors">Doors</a>
+          </li>
+        </ul>
       </nav>
     </header>
     <main>
       <div class="section-inner">
-        <p>So you wanna know how we control the timeline?</p>
-        <pre><code data-src="../js/main.js"></code></pre>
-        <p>To see more, take a look at</p>
+        <p>
+          So you wanna know how we control the timeline? Start with the big
+          button below, or jump to a section:
+        </p>
         <ul>
-          <li><a href="#canvas">HTML5 Canvas</a></li>
-          <li><a href="#animation-frame">window.requestAnimationFrame</a></li>
+          <li><a href="#initialising">Initialising</a></li>
+          <li><a href="#game">High level game mechanics</a></li>
+          <li><a href="#canvas">Setting up each canvas</a></li>
         </ul>
       </div>
+      <a href="#initialising" class="loki-button font-me-up">Start</a>
     </main>
-    <section id="#game">
-      <h2>Game</h2>
-      <pre><code data-src="../js/game.js"></code></pre>
+    <section id="initialising">
+      <h2>Initialising</h2>
+      <div class="section-inner">
+        <p>
+          We need to start somewhere, and in our initialisation, we'll need to
+          have a reference to everything on our HTML page to which our
+          JavaScript will need to refer. In our case, it's quite simple. It's
+          just:
+        </p>
+        <ul>
+          <li>the container into which we insert our clickable Lokis;</li>
+          <li>the button which starts the game;</li>
+          <li>and the element in which we show our score.</li>
+        </ul>
+        <pre><code data-src="../js/main.js"></code></pre>
+      </div>
+
+      <a href="#game" class="loki-button font-me-up">Next</a>
     </section>
+    <section id="game">
+      <h2>Game</h2>
+      <div class="section-inner">
+        <p>
+          We know we'll have a game which will start, end, and keep score. We
+          also know that it will advance in steps. We can therefore write a lot
+          of our
+          <em>boilerplate</em> game logic into place, even before we know the
+          specifics.
+        </p>
+        <pre><code data-src="../js/game.js"></code></pre>
+        <p>
+          In a config global variable, we can give ourselves easy access to
+          things like timings and sizes that we might want to tweak as we
+          develop the game.
+        </p>
+        <pre><code data-src="../js/config.js"></code></pre>
+        <p>
+          Similarly, there might be some tools we use in lots of our sections of
+          code, and for those we have
+          <code>./utils.js</code>.
+        </p>
+        <pre><code data-src="../js/utils.js"></code></pre>
+      </div>
+      <a href="#canvas" class="loki-button font-me-up">Next</a>
+    </section>
+    <section id="canvas">
+      <h2>Canvas</h2>
+      <div class="section-inner">
+        <p>
+          There's a fair bit of work to get our canvas set up, because we need
+          to have it work for multiple Lokis, of different sizes. We'll also
+          need to attach the images dynamically.
+        </p>
+        <pre><code data-src="../js/attach-image.js"></code></pre>
+        <p>Once we've attached the image, we can create the canvas.</p>
+        <pre><code data-src="../js/create-canvas.js"></code></pre>
+      </div>
+
+      <a href="#animation" class="loki-button font-me-up">Next</a>
+    </section>
+    <section id="animation">
+      <h2>Animation</h2>
+      <div class="section-inner">
+        <p>
+          This is where we get quite complicated. What we're trying to do is
+          simple in theory: make each Loki look like they're being pruned. In
+          practice, this means animating lots of frames where the amount of Loki
+          which is clipped is increasing, and the area soon-to-be-clipped is
+          painted some hauntingly pastel colour.
+        </p>
+        <picture
+          ><img src="../images/mobius-prune.jpg" alt="Mobius being pruned"
+        /></picture>
+        <p>
+          A little bit of blue, a bit of yellow, throw in some purple and we're
+          good to go. For our pruning effect, We just need to randomly pick out
+          one of those colours, and draw a circle of a given size.
+        </p>
+        <pre><code lang="javascript" data-src="../js/pruning-effect.js"></code></pre>
+        <p>
+          And then, to keep things simple, we create clip a circle that's just a
+          little smaller. For that, we'll need to be able to clip a circle.
+        </p>
+        <pre><code lang="javascript" data-src="../js/clipping-circle.js"></code></pre>
+        <p>
+          Looking good! Finally, the pruning animation will keep track of where
+          the circles are, how big they need to be, and it will call our drawing
+          and clipping functions.
+        </p>
+        <pre><code lang="javascript" data-src="../js/pruning-animation.js"></code></pre>
+      </div>
+      <a href="#click" class="loki-button font-me-up">Next</a>
+    </section>
+    <section id="click">
+      <h2>Click Listener</h2>
+      <div class="section-inner">
+        <p>
+          As is often the case when we're working with JavaScript, we want to
+          respond to a user click. In our game, we start the
+          <a href="#animation">animation</a> when the user clicks a Loki!
+        </p>
+        <p>
+          Essentially, we just need to kick off a bunch of effects. The most
+          complicated thing about our click listener is that we're generating
+          the callback based on some parameters — this is often really helpful,
+          when there's information or elements not available on pageload but
+          which we can pass to a function builder like this later.
+        </p>
+        <pre><code lang="javascript" data-src="../js/prune-click-listener.js"></code></pre>
+        <p>
+          Notice how we're using <code>setTimeout()</code> to delay two of the
+          effects: removing the Loki and showing the next one.
+        </p>
+      </div>
+      <a href="#doors" class="loki-button font-me-up">Next</a>
+    </section>
+
+    <section id="doors">
+      <h2>Doors</h2>
+      <div class="section-inner">
+        <p>
+          Our bonus effect is doors which open and close. This complicates the
+          drawing of our Lokis a little bit, because we want Loki to appear
+          after we've finished drawing the door, and stay visible while we close
+          the door.
+        </p>
+        <pre><code data-src="../js/doors.js"></code></pre>
+      </div>
+    </section>
+    <footer>
+      <p>Play the game at <a href="../">/prune</a>.</p>
+    </footer>
+    <script>
+      const nav = document.querySelector('header nav')
+      document.querySelectorAll('.nav-toggle').forEach((toggle) => {
+        toggle.addEventListener('click', () => {
+          nav.classList.toggle('open')
+          toggle.classList.toggle('open')
+        })
+      })
+    </script>
   </body>
 </html>

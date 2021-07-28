@@ -5,15 +5,60 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="keywords" content="html,javascript,tutorial,loki,tva" />
+
+    <meta prefix="og: http://ogp.me/ns#" property="og:type" content="website" />
+    <meta
+      prefix="og: http://ogp.me/ns#"
+      property="og:title"
+      content="Pruning Loki | An HTML5 and JavaScript Game"
+    />
+
+    <meta
+      prefix="og: http://ogp.me/ns#"
+      property="og:description"
+      content="A simple HTML5 game that uses canvas 2D context to create a 'pruning' effect like on the Loki show on Disney+"
+    />
+
+    <meta
+      prefix="og: http://ogp.me/ns#"
+      property="og:image"
+      content="./images/screenshot.png"
+    />
+
+    <meta
+      prefix="og: http://ogp.me/ns#"
+      property="og:url"
+      content="https://rjkerrison.co.uk/textbook/canvas/prune"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@robinjames_" />
+    <meta
+      name="twitter:domain"
+      content="https://rjkerrison.co.uk/textbook/canvas/prune"
+    />
+    <meta
+      name="twitter:title"
+      content="Pruning Loki | An HTML5 and JavaScript Game"
+    />
+    <meta
+      name="twitter:description"
+      content="A simple HTML5 game that uses canvas 2D context to create a 'pruning' effect like on the Loki show on Disney+"
+    />
+    <meta name="twitter:image" content="./images/screenshot.png" />
+
     <title>
-      Learning Canvas in JavaScript and HTML at the TVA | RJK Textbook
+      Pruning Loki TVA Browser Game | Canvas in JavaScript and HTML | RJK
+      Textbook
     </title>
     <link
       rel="stylesheet"
       href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/github-dark.min.css"
     />
     <link rel="stylesheet" href="../../shared/styles/font-me-up.css" />
-    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/shared.css" />
+    <link rel="stylesheet" href="./styles/clock.css" />
+    <link rel="stylesheet" href="./styles/game.css" />
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
     <script src="../../shared/js/font-me-up.js"></script>
     <!--
@@ -27,11 +72,14 @@
     <script src="./js/utils.js"></script>
     <script src="./js/attach-image.js"></script>
     <script src="./js/create-canvas.js"></script>
+    <script src="./js/clipping-circle.js"></script>
+    <script src="./js/pruning-effect.js"></script>
     <script src="./js/prune-click-listener.js"></script>
     <script src="./js/pruning-animation.js"></script>
     <script src="./js/doors.js"></script>
     <script src="./js/game.js"></script>
     <script src="./js/main.js"></script>
+    <script src="./js/clock.js"></script>
   </head>
   <body>
     <header>
@@ -45,8 +93,8 @@
       <div class="section-inner">
         <p>
           Hey y'all! Here at the TVA, we have the greatest power in the
-          universe: JavaScript. And with <code>&lt;canvas&gt;</code>, we control
-          the timeline.
+          universe: HTML5 <code>&lt;canvas&gt;</code>. And together with
+          JavaScript, we control the timeline.
         </p>
       </div>
       <button class="loki-button font-me-up" id="prune-start">Start</button>
@@ -54,5 +102,77 @@
     <footer>
       <p>Learn how the game works at <a href="./learn">/learn</a>.</p>
     </footer>
+    <div class="clock-container">
+      <div class="clock">
+        <div class="hands">
+          <div class="second"></div>
+          <div class="minute"></div>
+          <div class="hour"></div>
+          <div class="axis"></div>
+        </div>
+        <div class="indicators">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

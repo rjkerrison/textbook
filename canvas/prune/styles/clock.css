@@ -1,0 +1,276 @@
+:root {
+  --dark: #1b1e23;
+  --size: 80vmin;
+  --feature: #d65102;
+  --feature-alt: #ff7812;
+  --light: #f4eed7;
+}
+
+.clock-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+}
+
+.clock {
+  height: var(--size);
+  width: var(--size);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.clock .hands .second,
+.clock .hands .minute,
+.clock .hands .hour {
+  position: absolute;
+  left: calc(var(--size) * 0.492);
+  width: calc(var(--size) * 0.016);
+  transform-origin: bottom center;
+  z-index: 2;
+  /* border-radius: calc(var(--size) * 0.016); */
+}
+.clock .hands .axis {
+  background: var(--feature);
+  width: calc(var(--size) * 0.04);
+  height: calc(var(--size) * 0.04);
+  border-radius: 50%;
+  position: absolute;
+  z-index: 4;
+  top: calc(var(--size) * 0.48);
+  left: calc(var(--size) * 0.48);
+}
+.clock .hands .second {
+  height: calc(var(--size) * 0.4);
+  margin-top: calc(var(--size) * 0.1);
+  background: var(--feature);
+  animation: time 60s infinite steps(60);
+  z-index: 3;
+}
+.clock .hands .minute {
+  background: var(--feature-alt);
+  height: calc(var(--size) * 0.35);
+  margin-top: calc(var(--size) * 0.15);
+  opacity: 0.75;
+  animation: time 3600s linear infinite;
+}
+.clock .hands .hour {
+  background: var(--light);
+  height: calc(var(--size) * 0.3);
+  margin-top: calc(var(--size) * 0.2);
+  animation: time 43200s linear infinite;
+}
+
+.clock .indicators span {
+  display: block;
+  position: absolute;
+  transform-origin: bottom center;
+  left: calc(var(--size) * 0.495);
+  width: calc(var(--size) * 0.01);
+  z-index: 2;
+}
+
+.clock .indicators span {
+  height: calc(var(--size) * 0.5);
+  border-top-width: calc(var(--size) * 0.02);
+  border-top-style: solid;
+  border-top-color: var(--feature);
+}
+.clock .indicators span:nth-of-type(5n) {
+  border-top-width: calc(var(--size) * 0.04);
+  border-top-color: var(--light);
+}
+
+.clock .indicators span:nth-of-type(1) {
+  transform: rotateZ(calc(6deg * 1));
+}
+.clock .indicators span:nth-of-type(2) {
+  transform: rotateZ(calc(6deg * 2));
+}
+.clock .indicators span:nth-of-type(3) {
+  transform: rotateZ(calc(6deg * 3));
+}
+.clock .indicators span:nth-of-type(4) {
+  transform: rotateZ(calc(6deg * 4));
+}
+.clock .indicators span:nth-of-type(5) {
+  transform: rotateZ(calc(6deg * 5));
+}
+.clock .indicators span:nth-of-type(6) {
+  transform: rotateZ(calc(6deg * 6));
+}
+.clock .indicators span:nth-of-type(7) {
+  transform: rotateZ(calc(6deg * 7));
+}
+.clock .indicators span:nth-of-type(8) {
+  transform: rotateZ(calc(6deg * 8));
+}
+.clock .indicators span:nth-of-type(9) {
+  transform: rotateZ(calc(6deg * 9));
+}
+.clock .indicators span:nth-of-type(10) {
+  transform: rotateZ(calc(6deg * 10));
+}
+.clock .indicators span:nth-of-type(11) {
+  transform: rotateZ(calc(6deg * 11));
+}
+.clock .indicators span:nth-of-type(12) {
+  transform: rotateZ(calc(6deg * 12));
+}
+.clock .indicators span:nth-of-type(13) {
+  transform: rotateZ(calc(6deg * 13));
+}
+.clock .indicators span:nth-of-type(14) {
+  transform: rotateZ(calc(6deg * 14));
+}
+.clock .indicators span:nth-of-type(15) {
+  transform: rotateZ(calc(6deg * 15));
+}
+.clock .indicators span:nth-of-type(16) {
+  transform: rotateZ(calc(6deg * 16));
+}
+.clock .indicators span:nth-of-type(17) {
+  transform: rotateZ(calc(6deg * 17));
+}
+.clock .indicators span:nth-of-type(18) {
+  transform: rotateZ(calc(6deg * 18));
+}
+.clock .indicators span:nth-of-type(19) {
+  transform: rotateZ(calc(6deg * 19));
+}
+.clock .indicators span:nth-of-type(20) {
+  transform: rotateZ(calc(6deg * 20));
+}
+.clock .indicators span:nth-of-type(21) {
+  transform: rotateZ(calc(6deg * 21));
+}
+.clock .indicators span:nth-of-type(22) {
+  transform: rotateZ(calc(6deg * 22));
+}
+.clock .indicators span:nth-of-type(23) {
+  transform: rotateZ(calc(6deg * 23));
+}
+.clock .indicators span:nth-of-type(24) {
+  transform: rotateZ(calc(6deg * 24));
+}
+.clock .indicators span:nth-of-type(25) {
+  transform: rotateZ(calc(6deg * 25));
+}
+.clock .indicators span:nth-of-type(26) {
+  transform: rotateZ(calc(6deg * 26));
+}
+.clock .indicators span:nth-of-type(27) {
+  transform: rotateZ(calc(6deg * 27));
+}
+.clock .indicators span:nth-of-type(28) {
+  transform: rotateZ(calc(6deg * 28));
+}
+.clock .indicators span:nth-of-type(29) {
+  transform: rotateZ(calc(6deg * 29));
+}
+.clock .indicators span:nth-of-type(30) {
+  transform: rotateZ(calc(6deg * 30));
+}
+.clock .indicators span:nth-of-type(31) {
+  transform: rotateZ(calc(6deg * 31));
+}
+.clock .indicators span:nth-of-type(32) {
+  transform: rotateZ(calc(6deg * 32));
+}
+.clock .indicators span:nth-of-type(33) {
+  transform: rotateZ(calc(6deg * 33));
+}
+.clock .indicators span:nth-of-type(34) {
+  transform: rotateZ(calc(6deg * 34));
+}
+.clock .indicators span:nth-of-type(35) {
+  transform: rotateZ(calc(6deg * 35));
+}
+.clock .indicators span:nth-of-type(36) {
+  transform: rotateZ(calc(6deg * 36));
+}
+.clock .indicators span:nth-of-type(37) {
+  transform: rotateZ(calc(6deg * 37));
+}
+.clock .indicators span:nth-of-type(38) {
+  transform: rotateZ(calc(6deg * 38));
+}
+.clock .indicators span:nth-of-type(39) {
+  transform: rotateZ(calc(6deg * 39));
+}
+.clock .indicators span:nth-of-type(40) {
+  transform: rotateZ(calc(6deg * 40));
+}
+.clock .indicators span:nth-of-type(41) {
+  transform: rotateZ(calc(6deg * 41));
+}
+.clock .indicators span:nth-of-type(42) {
+  transform: rotateZ(calc(6deg * 42));
+}
+.clock .indicators span:nth-of-type(43) {
+  transform: rotateZ(calc(6deg * 43));
+}
+.clock .indicators span:nth-of-type(44) {
+  transform: rotateZ(calc(6deg * 44));
+}
+.clock .indicators span:nth-of-type(45) {
+  transform: rotateZ(calc(6deg * 45));
+}
+.clock .indicators span:nth-of-type(46) {
+  transform: rotateZ(calc(6deg * 46));
+}
+.clock .indicators span:nth-of-type(47) {
+  transform: rotateZ(calc(6deg * 47));
+}
+.clock .indicators span:nth-of-type(48) {
+  transform: rotateZ(calc(6deg * 48));
+}
+.clock .indicators span:nth-of-type(49) {
+  transform: rotateZ(calc(6deg * 49));
+}
+.clock .indicators span:nth-of-type(50) {
+  transform: rotateZ(calc(6deg * 50));
+}
+.clock .indicators span:nth-of-type(51) {
+  transform: rotateZ(calc(6deg * 51));
+}
+.clock .indicators span:nth-of-type(52) {
+  transform: rotateZ(calc(6deg * 52));
+}
+.clock .indicators span:nth-of-type(53) {
+  transform: rotateZ(calc(6deg * 53));
+}
+.clock .indicators span:nth-of-type(54) {
+  transform: rotateZ(calc(6deg * 54));
+}
+.clock .indicators span:nth-of-type(55) {
+  transform: rotateZ(calc(6deg * 55));
+}
+.clock .indicators span:nth-of-type(56) {
+  transform: rotateZ(calc(6deg * 56));
+}
+.clock .indicators span:nth-of-type(57) {
+  transform: rotateZ(calc(6deg * 57));
+}
+.clock .indicators span:nth-of-type(58) {
+  transform: rotateZ(calc(6deg * 58));
+}
+.clock .indicators span:nth-of-type(59) {
+  transform: rotateZ(calc(6deg * 59));
+}
+.clock .indicators span:nth-of-type(60) {
+  transform: rotateZ(calc(6deg * 60));
+}
+
+@keyframes time {
+  to {
+    transform: rotateZ(360deg);
+  }
+}

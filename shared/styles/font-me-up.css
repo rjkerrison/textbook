@@ -6,6 +6,7 @@
   height: 1em;
   line-height: 1;
   vertical-align: bottom;
+  text-align: center;
 }
 
 .font-me-up span:nth-of-type(5n + 1) {

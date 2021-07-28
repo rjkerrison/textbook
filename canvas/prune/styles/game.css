@@ -1,0 +1,50 @@
+h1 div::before {
+  display: block;
+  background-color: rgba(86, 184, 45, 0.9);
+  content: ' ';
+  border-radius: 2rem;
+  width: 100%;
+  height: 0.375em;
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  left: 0;
+  box-shadow: rgba(3, 75, 3, 0.9) 0.25rem 0.25rem 0.5rem;
+}
+
+#prune-start {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: center center;
+  z-index: 3;
+  transform: translateX(calc(50vw - 50%)) translateY(calc(50vh - 50%));
+}
+
+#prune-start.active {
+  transform: translateX(calc(50vw - 50%)) scale(0.5) translateY(-50%);
+}
+
+@media screen and (max-width: 800px) {
+  header {
+    flex-direction: column;
+    height: max-content;
+  }
+  h1,
+  .timer {
+    font-size: 3rem;
+  }
+  #prune-start {
+    height: 15rem;
+    width: 15rem;
+    font-size: 4rem;
+  }
+  #prune-start.active {
+    transform: translateX(calc(100vw - 75%)) translateY(calc(100vh - 100%))
+      scale(0.5);
+  }
+
+  main .section-inner {
+    display: none;
+  }
+}
