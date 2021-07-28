@@ -12,10 +12,26 @@
       rel="stylesheet"
       href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/github-dark.min.css"
     />
-    <link rel="stylesheet" href="./styles/font-me-up.css" />
+    <link rel="stylesheet" href="../../shared/styles/font-me-up.css" />
     <link rel="stylesheet" href="./styles/main.css" />
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
-    <script src="./js/font-me-up.js"></script>
+    <script src="../../shared/js/font-me-up.js"></script>
+    <!--
+      I break my JavaScript files down into parts and import them all,
+      so that I can display them verbatim in guide pages.
+
+      In industry, we usually "minify" our JavaScript into a minimal package.
+      It would often be called 'app.min.js' or similar.
+    -->
+    <script src="./js/config.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/attach-image.js"></script>
+    <script src="./js/create-canvas.js"></script>
+    <script src="./js/prune-click-listener.js"></script>
+    <script src="./js/pruning-animation.js"></script>
+    <script src="./js/doors.js"></script>
+    <script src="./js/game.js"></script>
+    <script src="./js/main.js"></script>
   </head>
   <body>
     <header>
@@ -34,7 +50,9 @@
         </p>
       </div>
       <button class="loki-button font-me-up" id="prune-start">Start</button>
-      <script src="./js/prune.js"></script>
     </main>
+    <footer>
+      <p>Learn how the game works at <a href="./learn">/learn</a>.</p>
+    </footer>
   </body>
 </html>
