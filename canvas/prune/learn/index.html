@@ -5,6 +5,77 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="keywords" content="html,javascript,tutorial,loki,tva" />
+
+    <meta prefix="og: http://ogp.me/ns#" property="og:type" content="website" />
+    <meta
+      prefix="og: http://ogp.me/ns#"
+      property="og:title"
+      content="Pruning Loki | An HTML5 and JavaScript Game"
+    />
+
+    <meta
+      prefix="og: http://ogp.me/ns#"
+      property="og:description"
+      content="A guide to creating a simple HTML5 game that uses canvas 2D context to create a 'pruning' effect like on the Loki show on Disney+"
+    />
+
+    <meta
+      prefix="og: http://ogp.me/ns#"
+      property="og:image"
+      name="image"
+      content="https://rjkerrison.co.uk/textbook/canvas/prune/images/wide-screenshot.jpg"
+    />
+
+    <meta
+      prefix="og: http://ogp.me/ns#"
+      property="og:url"
+      content="https://rjkerrison.co.uk/textbook/canvas/prune/learn"
+    />
+    <meta
+      prefix="og: http://ogp.me/ns#"
+      name="author"
+      property="og:author"
+      content="Robin James Kerrison"
+    />
+    <meta
+      prefix="og: http://ogp.me/ns#"
+      property="og:publish_date"
+      name="publish_date"
+      content="2021-07-28T19:57:51.000Z"
+    />
+    <meta property="og:locale" content="en_GB" />
+    <meta
+      property="article:published_time"
+      name="publish_date"
+      content="2021-07-28T19:57:51.000Z"
+    />
+    <meta name="pdate" content="20210728" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@robinjames_" />
+    <meta name="twitter:creator" content="@robinjames_" />
+    <meta
+      name="twitter:domain"
+      content="https://rjkerrison.co.uk/textbook/canvas/prune/learn"
+    />
+    <meta
+      name="twitter:title"
+      content="Pruning Loki | A guide to creating an HTML5 and JavaScript Game"
+    />
+    <meta
+      name="twitter:description"
+      content="A guide to creating a simple HTML5 game that uses canvas 2D context to create a 'pruning' effect like on the Loki show on Disney+"
+    />
+    <meta
+      name="twitter:image"
+      content="https://rjkerrison.co.uk/textbook/canvas/prune/images/wide-screenshot.jpg"
+    />
+    <meta
+      name="twitter:image:alt"
+      property="og:image:alt"
+      content="A screenshot of the Loki game with Loki being removed gradually from view"
+    />
+
     <title>
       Pruning Loki Browser Game | Learning Canvas in JavaScript and HTML at the
       TVA | RJK Textbook
@@ -71,15 +142,30 @@
           button below, or jump to a section:
         </p>
         <ul>
-          <li><a href="#initialising">Initialising</a></li>
-          <li><a href="#game">High level game mechanics</a></li>
-          <li><a href="#canvas">Setting up each canvas</a></li>
+          <li>
+            <a href="#initialising">Initialising with the page</a>
+          </li>
+          <li>
+            <a href="#game">Defining high-level game mechanics</a>
+          </li>
+          <li>
+            <a href="#canvas">Setting up the right canvas</a>
+          </li>
+          <li>
+            <a href="#animation">Defining our animation</a>
+          </li>
+          <li>
+            <a href="#click">Handling the user's click</a>
+          </li>
+          <li>
+            <a href="#doors">Opening the doors</a>
+          </li>
         </ul>
       </div>
       <a href="#initialising" class="loki-button font-me-up">Start</a>
     </main>
     <section id="initialising">
-      <h2>Initialising</h2>
+      <h2>Initialising with the page</h2>
       <div class="section-inner">
         <p>
           We need to start somewhere, and in our initialisation, we'll need to
@@ -98,7 +184,7 @@
       <a href="#game" class="loki-button font-me-up">Next</a>
     </section>
     <section id="game">
-      <h2>Game</h2>
+      <h2>Defining high-level game mechanics</h2>
       <div class="section-inner">
         <p>
           We know we'll have a game which will start, end, and keep score. We
@@ -124,22 +210,26 @@
       <a href="#canvas" class="loki-button font-me-up">Next</a>
     </section>
     <section id="canvas">
-      <h2>Canvas</h2>
+      <h2>Setting up the right canvas</h2>
       <div class="section-inner">
         <p>
           There's a fair bit of work to get our canvas set up, because we need
           to have it work for multiple Lokis, of different sizes. We'll also
           need to attach the images dynamically.
         </p>
-        <pre><code data-src="../js/attach-image.js"></code></pre>
-        <p>Once we've attached the image, we can create the canvas.</p>
         <pre><code data-src="../js/create-canvas.js"></code></pre>
+        <p>
+          With the canvas we've created, we'll be able to attach the image. Note
+          that we don't actually execute this until the
+          <a href="#doors">doors</a> are ready.
+        </p>
+        <pre><code data-src="../js/attach-image.js"></code></pre>
       </div>
 
       <a href="#animation" class="loki-button font-me-up">Next</a>
     </section>
     <section id="animation">
-      <h2>Animation</h2>
+      <h2>Defining our animation</h2>
       <div class="section-inner">
         <p>
           This is where we get quite complicated. What we're trying to do is
@@ -172,7 +262,7 @@
       <a href="#click" class="loki-button font-me-up">Next</a>
     </section>
     <section id="click">
-      <h2>Click Listener</h2>
+      <h2>Handling the user's click</h2>
       <div class="section-inner">
         <p>
           As is often the case when we're working with JavaScript, we want to
@@ -196,7 +286,7 @@
     </section>
 
     <section id="doors">
-      <h2>Doors</h2>
+      <h2>Opening the doors</h2>
       <div class="section-inner">
         <p>
           Our bonus effect is doors which open and close. This complicates the
