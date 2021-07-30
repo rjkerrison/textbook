@@ -215,7 +215,18 @@
         <p>
           There's a fair bit of work to get our canvas set up, because we need
           to have it work for multiple Lokis, of different sizes. We'll also
-          need to attach the images dynamically.
+          need to draw the images and add the click events dynamically.
+        </p>
+        <p>
+          We create a new canvas element for every Loki we want to show, because
+          we want a one-to-one relationship with the images and the click event.
+        </p>
+        <p>
+          Handling clicks inside a canvas is difficult: we'd have to check the
+          coordinates of the click. Clearing specific rectangles from within a
+          canvas would also mean keeping track of the exact place where we drew
+          each Loki. The simplest solution for removing a Loki from our screen
+          is to remove the whole canvas element.
         </p>
         <pre><code data-src="../js/create-canvas.js"></code></pre>
         <p>
