@@ -195,6 +195,25 @@
         </p>
         <pre><code data-src="../js/game.js"></code></pre>
         <p>
+          There are some high-level names of processes here which we define
+          elsewhere:
+        </p>
+        <ul>
+          <li>
+            <code>createCanvas()</code> is declared as part of our
+            <a href="#canvas">canvas</a> section
+          </li>
+          <li>
+            <code>attachImages()</code> is part of
+            <a href="#drawing">canvas drawing</a> subsection
+          </li>
+          <li>
+            <code>getPruneClickListener()</code> is in a section of our code
+            dedicated to
+            <a href="#click">handling the user's click</a>
+          </li>
+        </ul>
+        <p>
           In a config global variable, we can give ourselves easy access to
           things like timings and sizes that we might want to tweak as we
           develop the game.
@@ -229,10 +248,17 @@
           is to remove the whole canvas element.
         </p>
         <pre><code data-src="../js/create-canvas.js"></code></pre>
+        <h3 id="drawing">Drawing images on a canvas</h3>
         <p>
           With the canvas we've created, we'll be able to attach the image. Note
           that we don't actually execute this until the
           <a href="#doors">doors</a> are ready.
+        </p>
+        <p>
+          Some of the important work here was done in the definition of
+          <code>loadImages()</code> which is a responsibility we've left to the
+          <a href="#game">game mechanics</a>. All we need to know is that
+          <code>chosenImage</code> is a valid <code>Image()</code> instance.
         </p>
         <pre><code data-src="../js/attach-image.js"></code></pre>
       </div>
@@ -259,8 +285,8 @@
         </p>
         <pre><code lang="javascript" data-src="../js/pruning-effect.js"></code></pre>
         <p>
-          And then, to keep things simple, we create clip a circle that's just a
-          little smaller. For that, we'll need to be able to clip a circle.
+          And then, to keep things simple, we clip a circle that's just a little
+          smaller. For that, we'll need to be able to clip a circle.
         </p>
         <pre><code lang="javascript" data-src="../js/clipping-circle.js"></code></pre>
         <p>
@@ -313,10 +339,12 @@
     </footer>
     <script>
       const nav = document.querySelector('header nav')
-      document.querySelectorAll('.nav-toggle').forEach((toggle) => {
+      const toggles = document.querySelectorAll('.nav-toggle, header nav a')
+      const toggleOpen = (el) => el.classList.toggle('open')
+      toggles.forEach((toggle) => {
         toggle.addEventListener('click', () => {
-          nav.classList.toggle('open')
-          toggle.classList.toggle('open')
+          toggleOpen(nav)
+          toggles.forEach(toggleOpen)
         })
       })
     </script>
