@@ -5,8 +5,7 @@ function init() {
   // * Executions/Functions
 
   function playSound(e) {
-    const filepath = `./sounds/${e.target.dataset.id}.wav`
-    const audio = new Audio(filepath)
+    const audio = document.querySelector(`audio#${e.target.dataset.id}`)
     audio.play()
   }
 
