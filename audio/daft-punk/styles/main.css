@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  background-image: url('../daft-punk.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 440px;
+}
+
+.container > div {
+  margin: 5px;
+  height: 100px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: white;
+  opacity: 0.5;
+  border-radius: 8px;
+}
+
+.container > div:hover {
+  background-color: #333;
+  color: white;
+  transform: scale(1.1);
+}
