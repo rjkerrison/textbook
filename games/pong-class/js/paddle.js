@@ -53,3 +53,18 @@ class Paddle {
     }
   }
 }
+
+;(function () {
+  const canvas = document.querySelector('canvas')
+  const context = canvas.getContext('2d')
+  const computerPaddle = new Paddle({ x: 20, y: 5 }, '#2f5384', canvas.width, 5)
+  const playerPaddle = new Paddle(
+    { x: 0, y: canvas.height - 10 },
+    '#894178',
+    canvas.width,
+    5
+  )
+
+  computerPaddle.draw(context)
+  playerPaddle.draw(context)
+})()
