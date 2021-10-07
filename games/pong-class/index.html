@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pong | Creating Games for the Web | RJK Textbook</title>
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/github-dark.min.css"
+    />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/sections.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
+    <script src="https://rjkerrison.co.uk/script/google-analytics.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1 id="top">Pong</h1>
+      <nav>
+        <ul>
+          <li><a href="#paddle">Paddles</a></li>
+          <li><a href="#static">Static</a></li>
+          <li><a href="#move-ball">Move The Ball</a></li>
+          <li><a href="#move-paddles">Move The Paddle</a></li>
+          <li><a href="#bounce">Bounce The Ball</a></li>
+          <li><a href="#playable">Playable</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="paddle">
+        <h2>Prerequisites: Defining Paddles</h2>
+        <div style="display: flex">
+          <div>
+            <canvas id="paddle" width="400" height="400"></canvas>
+          </div>
+          <div class="group">
+            <p>
+              We need to be able to store paddles and draw them. They'll have a
+              position, a configurable colour, and we also need to have a way of
+              checking if the ball is in the horizontal range covered by the
+              paddle.
+            </p>
+          </div>
+        </div>
+        <pre><code data-src="./js/paddle.js" lang="javascript"></code></pre>
+        <script src="./js/paddle.js"></script>
+        <footer><a href="#moving-ball">Next step: moving ball</a></footer>
+      </section>
+      <section id="static">
+        <h2>Step One: Static Drawing</h2>
+        <canvas id="pong-static" width="400" height="400"></canvas>
+        <pre><code data-src="./js/pong-static.js" lang="javascript"></code></pre>
+        <script src="./js/pong-static.js"></script>
+        <footer><a href="#moving-ball">Next step: moving ball</a></footer>
+      </section>
+      <section id="move-ball">
+        <h2>Step Two: Move The Ball</h2>
+        <canvas id="pong-moving-ball" width="400" height="400"></canvas>
+        <pre><code data-src="./js/pong-moving-ball.js" lang="javascript"></code></pre>
+        <script src="./js/pong-moving-ball.js"></script>
+        <footer>
+          <a href="#move-paddles">Next step: user-controlled paddle</a>
+        </footer>
+      </section>
+      <section id="move-paddles">
+        <h2>Step Three: Move The Paddle</h2>
+        <canvas id="pong-move-paddles" width="400" height="400"></canvas>
+        <pre><code data-src="./js/pong-move-paddles.js" lang="javascript"></code></pre>
+        <script src="./js/pong-move-paddles.js"></script>
+        <footer>
+          <a href="#top">Next step: bounce</a>
+        </footer>
+      </section>
+      <section id="bounce">
+        <h2>Step Five: Bounce</h2>
+        <div style="display: flex">
+          <div>
+            <canvas id="pong-bounce" width="400" height="400"></canvas>
+          </div>
+        </div>
+        <pre><code data-src="./js/pong-bounce.js" lang="javascript"></code></pre>
+        <footer>
+          <a href="#top">Next step: fully playable</a>
+        </footer>
+        <script src="./js/pong-bounce.js"></script>
+      </section>
+      <section id="playable">
+        <h2>Step Five: Fully Playable</h2>
+        <div style="display: flex">
+          <div>
+            <canvas id="pong-playable" width="400" height="400"></canvas>
+          </div>
+          <div id="scores">
+            <p id="computer-score"></p>
+            <p id="player-score"></p>
+          </div>
+        </div>
+        <pre><code data-src="./js/pong-playable.js" lang="javascript"></code></pre>
+        <footer>
+          <a href="#top">Back to top</a>
+        </footer>
+        <script src="./js/pong-playable.js"></script>
+      </section>
+    </main>
+    <footer></footer>
+    <script src="../../shared/js/code-handling.js"></script>
+  </body>
+</html>

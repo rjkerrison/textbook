@@ -52,16 +52,6 @@ function drawBall() {
   drawCircle(ball)
 }
 
-let steps = 150
-let index = 0
-function ballPositionForStep(step) {
-  if (step > steps) {
-    let reverseStep = steps * 2 - step
-    return { x: reverseStep + 25, y: reverseStep * 2 }
-  }
-  return { x: step + 25, y: step * 2 }
-}
-
 let isMovingLeft = false
 let isMovingRight = false
 
@@ -96,7 +86,6 @@ function nextStep() {
   drawPaddles()
   moveBall()
   drawBall()
-  index = (index + 1) % (steps * 2)
   setTimeout(nextStep, 15)
 }
 

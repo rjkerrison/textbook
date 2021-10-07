@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+
+canvas {
+  border: 2px solid rgb(235, 181, 45);
+  background: linear-gradient(rgb(137, 9, 137), rgb(155, 24, 46));
+  background: linear-gradient(to bottom, #ff51ff 25%, #fc28a8);
+  width: 50vh;
+  height: auto;
+}
+canvas {
+  content: '';
+  background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 2px,
+      #fff 2px,
+      #fff 10px
+    ),
+    repeating-linear-gradient(
+      to right,
+      transparent 0,
+      transparent 2px,
+      #fff 2px,
+      #fff 10px
+    );
+}
+
+body > div {
+  display: flex;
+  align-items: center;
+}
+
+#scores {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: yellow;
+  font-size: 10rem;
+}
+
+#scores p {
+  margin: 0;
+}
