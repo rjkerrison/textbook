@@ -32,9 +32,7 @@ class Paddle {
 
   // we need to be able to move
   moveLeft() {
-    console.log('moving left', this.position.x)
     this.position.x -= this.resolution
-    console.log('moved left', this.position.x)
 
     const distancePastLeftEdge = 0 - this.leftSide()
     if (distancePastLeftEdge > 0) {
@@ -42,14 +40,11 @@ class Paddle {
     }
   }
   moveRight() {
-    console.log('moving right', this.position.x)
     this.position.x += this.resolution
-    console.log('moved right', this.position.x)
 
     const distancePastRightEdge = this.rightSide() - this.gameWidth
     if (distancePastRightEdge > 0) {
       this.position.x -= distancePastRightEdge
-      console.log('adjustedRight', this.position.x)
     }
   }
 }
