@@ -6,43 +6,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RJK Textbook</title>
     <script src="https://rjkerrison.co.uk/script/google-analytics.js"></script>
+    <link rel="stylesheet" href="https://rjkerrison.co.uk/styles/main.css" />
+
+    <link rel="stylesheet" href="https://rjkerrison.co.uk/styles/header.css" />
+    <script>
+      window.mainHeading = 'The RJK Textbook'
+    </script>
+    <script src="https://rjkerrison.co.uk/script/shared.js"></script>
   </head>
   <body>
-    <h1>The Textbook</h1>
-    <p>
-      This index is pretty lo-fi. I've spent a lot more time on the resources
-      below.
-    </p>
-    <ul>
-      <li>
-        <a href="./games/pong-static-demo/index.html"
-          >Static Pong Example with HTML5 Canvas</a
-        >, following from which there are increasingly advanced stages of a pong
-        game, all the way to
-        <a href="./games/pong-playable-original/index.html"
-          >a playable Pong game</a
-        >
-      </li>
-      <li>
-        <a href="./audio/raptors/index.html"
-          >Learning HTML5 Audio with Velociraptors</a
-        >
-      </li>
-      <li>
-        <a href="./audio/controls/index.html"
-          >Learning how to create HTML5 Audio controls</a
-        >
-      </li>
-      <li>
-        <a href="./time/index.html"
-          >Time: setTimeout, setInterval, and stopwatches</a
-        >
-      </li>
-      <li>
-        <a href="./canvas/prune/index.html">Canvas: special effects</a>
-      </li>
-    </ul>
-    <p>Happy travels!</p>
-    <p>Robin</p>
+    <main>
+      <section>
+        <div class="section-inner">
+          <p>
+            This index is pretty lo-fi. I've spent a lot more time on the
+            resources below.
+          </p>
+        </div>
+      </section>
+      <section>
+        <h2>HTML Canvas</h2>
+        <div class="section-inner">
+          <div>
+            <h3>Pong</h3>
+            <p>
+              The guide through this arcade classic starts with
+              <a href="./games/pong-static-demo/index.html"
+                >a static Pong Example with HTML5 Canvas</a
+              >, following from which there are increasingly advanced stages of
+              a pong game, all the way to
+              <a href="./games/pong-playable-original/index.html"
+                >a playable Pong game</a
+              >.
+            </p>
+          </div>
+          <div>
+            <h3>Time</h3>
+            <p>
+              Dive into
+              <a href="./time/index.html">Time in JavaScript</a>
+              with this one-page introduction which looks at
+              <code>setTimeout</code>, <code>setInterval</code>, and building
+              stopwatches.
+            </p>
+          </div>
+          <div>
+            <h3>Special Effects</h3>
+            <p>
+              The
+              <a href="./canvas/prune/index.html">Loki "pruning" game</a> based
+              on the Marvel Studios TV series looks in depth at how complex
+              visual effects can be created in steps.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>HTML Audio</h2>
+        <div class="section-inner">
+          <div>
+            <h3>
+              <a href="./audio/raptors/index.html"
+                >Learning HTML5 Audio with Velociraptors</a
+              >
+            </h3>
+            <p>
+              An introduction to the HTML5 audio element, featuring a memorable
+              dinosaur sound.
+            </p>
+          </div>
+          <div>
+            <h3>
+              <a href="./audio/controls/index.html"
+                >Learning how to create HTML5 Audio controls</a
+              >
+            </h3>
+            <p>
+              A more advanced guide to HTML5, looking at how to use the default
+              controls and provide custom functionality.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="section-inner">
+          <div>
+            <p>Happy travels!</p>
+            <p>Robin</p>
+          </div>
+        </div>
+      </section>
+    </main>
   </body>
 </html>
