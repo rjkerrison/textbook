@@ -24,7 +24,7 @@ function updateCountdownWithMonthsAndDays(remainingTime, hms) {
   // Remember: time started on 1st January 1970 — hence the aesthetic of the TVA
   const years = remainingTime.getFullYear() - 1970
   const months = remainingTime.getMonth() + 12 * years
-  const days = remainingTime.getDay()
+  const days = remainingTime.getDate() - 1
   countdownMonthsDisplay.textContent = `${months} months, ${days} days, ${hms}`
 }
 
