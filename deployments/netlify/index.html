@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React deployment guide</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/github-dark.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- integrity="sha512-rO+olRTkcf304DQBxSWxln8JXCzTHlKnIdnMUwYvQa9/Jd4cQaNkItIUj6Z6nvW1dqK0SKXLbn9h4KwZTNtAyw==" -->
+    <link rel="stylesheet" href="../../shared/styles/cfu.css" />
+    <style>
+      body {
+        font-family: 'Varela Round';
+      }
+      .paddington {
+        font-family: 'Paddington';
+      }
+      section {
+        display: grid;
+        grid-auto-rows: minmax(0, 1fr);
+        grid-template-rows: auto;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+        grid-auto-flow: row;
+        padding: 4rem 1rem 1rem;
+      }
+      p code {
+        color: hsl(50, 69%, 62%);
+      }
+
+      section:nth-of-type(5n) {
+        background-color: hsl(280, 49%, 42%);
+      }
+      section:nth-of-type(5n + 1) {
+        background-color: hsl(230, 49%, 42%);
+      }
+      section:nth-of-type(5n + 2) {
+        background-color: hsl(130, 49%, 42%);
+      }
+      section:nth-of-type(5n + 3) {
+        background-color: hsl(330, 49%, 42%);
+      }
+      section:nth-of-type(5n + 4) {
+        background-color: hsl(0, 49%, 42%);
+      }
+
+      ul li {
+        font-family: 'Varela Round';
+        font-size: calc(1.5rem + 1.5vw);
+        text-align: center;
+        margin: 0;
+        display: list-item;
+      }
+
+      .picture-container {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+      }
+      picture {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+      }
+      picture img {
+        display: block;
+        max-height: 100%;
+        max-width: 100%;
+        width: auto;
+        height: auto;
+      }
+    </style>
+    <!-- Load Babel - used to parse JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- React's core library-->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <!-- ReactDOM library renders the content created with React to the DOM. -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"
+      integrity="sha512-BNc7saQYlxCL10lykUYhFBcnzdKMnjx5fp5s5wPucDyZ7rKNwCoqJh1GwEAIhuePEK4WM9askJBRsu7ma0Rzvg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="../../shared/js/cfu.js"></script>
+    <script>
+      window.addEventListener('load', () => {
+        console.log('Loaded', hljs)
+        hljs.highlightAll()
+      })
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const Picture = ({ filename }) => {
+        return (
+          <>
+            <div className="picture-container">
+              <picture>
+                <img src={`./images/${filename}`} alt={filename} />
+              </picture>
+            </div>
+          </>
+        )
+      }
+
+      const questions = [
+        <>
+          <h2 className="paddington">React Deployment Guide</h2>
+          <p>How to deploy your React frontend into Netlify</p>
+        </>,
+        <>
+          <h2 className="paddington">Watch out</h2>
+          <p>
+            for where I've written "Netflix" instead of "Netlify" &ndash; I bet
+            there's at least one
+          </p>
+        </>,
+        <>
+          <h2 className="paddington">Prerequisites</h2>
+          <ul>
+            <li>A MongoDB Atlas database</li>
+            <li>A REST API backend deployed to Heroku</li>
+            <li>Postman tests for your deployed API (so you know it works)</li>
+            <li>
+              <p>A React Frontend repo pushed to Github</p>
+              <aside>
+                (my example,{' '}
+                <a
+                  href="https://github.com/rjkerrison/ciaocine-react"
+                  target="_blank"
+                >
+                  Ciaocine React Frontend
+                </a>
+                )
+              </aside>
+            </li>
+          </ul>
+        </>,
+
+        <h2 className="paddington">Step one: Sign up to Netlify</h2>,
+        <p>
+          Go to <a href="https://www.netlify.com/">Netlify.com</a>.
+        </p>,
+        <p>
+          You can log in with Github. This is recommended because you'll need to
+          link your Netlify account to your Github account anyway.
+        </p>,
+        <>
+          <p>It should now look like this:</p>
+          <Picture filename="01-dashboard.png" />
+        </>,
+        <>
+          <h2 className="paddington">Step two: add a new project</h2>
+        </>,
+        <>
+          <h3>Add from the Netlify dashboard</h3>
+          <Picture filename="02-dashboard-add.png" />
+        </>,
+        <>
+          <h3>Import your project</h3>
+          <Picture filename="03-import-step.png" />
+        </>,
+        <>
+          <h3>Import your project from Github</h3>
+          <Picture filename="04-import-from-github.png" />
+        </>,
+        <>
+          <h3>If your project is not found in the list&hellip;</h3>
+          <Picture filename="05-import-from-github-not-found.png" />
+        </>,
+        <>
+          <h3>&hellip;you'll have to give Netlify access to it</h3>
+          <div className="flex-row">
+            <Picture filename="06-netlify-repository-access.png" />
+            <Picture filename="07-netlify-repository-access-adding.png" />
+            <Picture filename="08-netlify-repository-access-added.png" />
+          </div>
+        </>,
+        <>
+          <h3>When found, click continue</h3>
+          <Picture filename="09-import-from-github-found.png" />
+        </>,
+        <>
+          <div>
+            <h3>Specify the build settings</h3>
+            <p>The default ones should work</p>
+          </div>
+          <Picture filename="10-build-settings.png" />
+        </>,
+        <>
+          <h3>The deploy will start!</h3>
+          <Picture filename="11-default-name-deploy-in-progress.png" />
+        </>,
+        <>
+          <h3>You will probably want to rename your project</h3>
+          <Picture filename="12-renamed.png" />
+        </>,
+        <>
+          <div>
+            <h2>Deployment Problems</h2>
+            <p>Sometimes, there is an issue in deployment</p>
+          </div>
+          <Picture filename="13-deploy-failed-linting.png" />
+        </>,
+        <>
+          <div>
+            <h3>Fix issues locally</h3>
+            <p>
+              You can test the build locally with <code>npm run build</code>.
+              When fixed, deploy again.
+            </p>
+          </div>
+          <Picture filename="14-just-push-when-fixed.png" />
+        </>,
+        <>
+          <h3>Success!</h3>
+          <Picture filename="15-success.png" />
+        </>,
+        <h2 className="paddington">Environment variables</h2>,
+        <>
+          <h3>
+            Use <code>process.env</code> in your app constants
+          </h3>
+          <p>
+            If you don't have any <code>consts.js</code> or similar
+            configuration, create one. You need to centralise the setting of
+            your configuration, so that it can easily be overridden by
+            environment variables.
+          </p>
+          <pre>
+            <code>
+              {`export const API_URL = process.env.REACT_APP_API_URL ||
+  'http://localhost:5005/api'`}
+            </code>
+          </pre>
+          <p>
+            It's important that we use the <code>REACT_APP_</code> prefix.{' '}
+            <i>react-scripts</i> will ignore other environment variables.
+          </p>
+        </>,
+        <>
+          <h3>
+            Add the production environment variables to your Netlify
+            configuration
+          </h3>
+          <Picture filename="16-adding-an-environment-variable.png" />
+        </>,
+        <h2 className="paddington">React Router Problems</h2>,
+        <>
+          <div>
+            <h3>Direct navigation</h3>
+            <p>
+              If you navigate to a page away from the root route and then
+              refresh, you'll encounter an error page.
+            </p>
+          </div>
+          <Picture filename="17-react-router-problems.png" />
+        </>,
+        <>
+          <h3>Netlify redirects</h3>
+          <p>
+            The fix is relatively simple. Netflix needs to know that it should
+            redirect traffic to the <code>/movies</code> route onto the{' '}
+            <code>index.html</code> page, where React will deal with it.
+          </p>
+          <pre>
+            <code>/* /index.html 200</code>
+          </pre>
+          <p>
+            We add the above code to a file at <code>./public/_redirects</code>.
+            There is a{' '}
+            <a href="https://github.com/rjkerrison/ciaocine-react/commit/77c6fff65b9a09966873f46e9a124d6a3485ae8f">
+              one line commit which fixes React Router
+            </a>{' '}
+            for Ciaocine.
+          </p>
+        </>,
+        <>
+          <h3>Free Code Camp: React Router on Netlify</h3>
+          <p>
+            Another guide like this is available at{' '}
+            <a
+              href="https://www.freecodecamp.org/news/how-to-deploy-react-router-based-app-to-netlify/"
+              target="_blank"
+            >
+              Free Code Camp: how to deploy react router based app to netlify
+            </a>
+          </p>
+        </>,
+        <h2 className="paddington">CORS</h2>,
+        <>
+          <div>
+            <h3>Cross Origin Resource Sharing</h3>
+            <p>
+              You now have your website in two places, e.g.{' '}
+              <code>ciaocine.herokuapp.com</code> and{' '}
+              <code>ciaocine.netlify.app</code>. Modern web browsers will block
+              a JSON request from a frontend unless the backend matches the
+              origin, or if the origin is specified as allowed.
+            </p>
+          </div>
+        </>,
+        <>
+          <div>
+            <h3>One last environment variable</h3>
+            <p>
+              We just need to use the <code>process.env.ORIGIN</code>{' '}
+              configuration we already have.
+            </p>
+          </div>
+          <Picture filename="18-cors-finally.png" />
+        </>,
+        <h2 className="paddington">Congratulations! You did it!</h2>,
+      ]
+
+      const QuestionSection = ({ element }) => <section>{element}</section>
+
+      ReactDOM.render(
+        <>
+          <header>
+            <h1>React Deployment Guide</h1>
+          </header>
+          <main>
+            {questions.map((q, i) => (
+              <QuestionSection element={q} key={i} />
+            ))}
+          </main>
+        </>,
+        document.getElementById('root'),
+        () => hljs.highlightAll()
+      )
+    </script>
+  </body>
+</html>
