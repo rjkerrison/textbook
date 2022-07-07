@@ -338,6 +338,10 @@
             configuration
           </h3>
           <Picture filename="16-adding-an-environment-variable.png" />
+          <p>
+            <code>REACT_APP_API_URL</code> is your deployed backend URL, e.g,{' '}
+            <code>https://ciaocine.herokuapp.com/</code>
+          </p>
         </>,
         <h2 className="paddington">React Router Problems</h2>,
         <>
@@ -362,6 +366,9 @@
           </pre>
           <p>
             We add the above code to a file at <code>./public/_redirects</code>.
+            Note the lack of file extension.
+          </p>
+          <p>
             There is a{' '}
             <a href="https://github.com/rjkerrison/ciaocine-react/commit/77c6fff65b9a09966873f46e9a124d6a3485ae8f">
               one line commit which fixes React Router
@@ -400,6 +407,22 @@
             <p>
               We just need to use the <code>process.env.ORIGIN</code>{' '}
               configuration we already have.
+            </p>
+            <h4>No trailing slash!</h4>
+            <p>
+              It is very important that you specify exactly{' '}
+              <a
+                href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin"
+                title="MDN | Origin - HTTP"
+              >
+                your request <code>Origin</code> header
+              </a>
+              . <code>https://ciaocine.netlify.app</code> is an example origin
+              header: note that it doesn't have a trailing slash.
+            </p>
+            <p>
+              You can find an <code>Origin</code> header in any request made in
+              your browser's network tab.
             </p>
           </div>
           <Picture filename="18-cors-finally.png" />
