@@ -20,12 +20,25 @@ function updateCountdownWithDays(millisecondsToGo, hms) {
   countdownDisplay.textContent = `${totalDays} days, ${hms}`
 }
 
-function updateCountdownWithMonthsAndDays(remainingTime, hms) {
-  // Remember: time started on 1st January 1970 — hence the aesthetic of the TVA
-  const years = remainingTime.getFullYear() - 1970
-  const months = remainingTime.getMonth() + 12 * years
+function updateCountdownWithMonthsAndDays(startTime, endTime, hms) {
+  // First we need to get the months between these dates
+  const months = getMonthsBetween(startTime, endTime)
+  // And now we can move our startTime forward by that many months
+  const startTimePlusMonths = new Date(startTime)
+  startTimePlusMonths.setMonth(startTime.getMonth() + months)
+
+  // We've handled the months, and so can now check how many days are left
+  const remainingTime = new Date(endTime - startTimePlusMonths)
   const days = remainingTime.getDate() - 1
   countdownMonthsDisplay.textContent = `${months} months, ${days} days, ${hms}`
+}
+
+function getMonthsBetween(startDate, endDate) {
+  // It takes a bit of work to calculate how many full months are between two dates
+  const monthDiff = endDate.getMonth() - startDate.getMonth()
+  const yearDiff = endDate.getFullYear() - startDate.getFullYear()
+
+  return monthDiff + yearDiff * 12 - 1
 }
 
 function updateCountdownDisplays() {
@@ -37,7 +50,7 @@ function updateCountdownDisplays() {
   const hms = getHms(remainingTime)
 
   updateCountdownWithDays(millisecondsToGo, hms)
-  updateCountdownWithMonthsAndDays(remainingTime, hms)
+  updateCountdownWithMonthsAndDays(new Date(), endOfYear, hms)
 }
 
 // setInterval again! What did you expect?
