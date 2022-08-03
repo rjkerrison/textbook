@@ -5,7 +5,7 @@ const countdownMonthsDisplay = document.querySelector(
 )
 
 // The countdown date
-const multiverseOfMadnessReleaseDate = new Date(2022, 2, 25)
+const endOfYear = new Date(new Date().getFullYear() + 1, 0, 1, 0, 0, 0, 0)
 
 // This is a big chunk of code that groups together nicely
 function getHms(time) {
@@ -30,7 +30,7 @@ function updateCountdownWithMonthsAndDays(remainingTime, hms) {
 
 function updateCountdownDisplays() {
   // We take the difference between the target time and now
-  const millisecondsToGo = multiverseOfMadnessReleaseDate - Date.now()
+  const millisecondsToGo = endOfYear - Date.now()
   // And we turn that into a date
   const remainingTime = new Date(millisecondsToGo)
   // A handy string for all the little bits smaller than a day
