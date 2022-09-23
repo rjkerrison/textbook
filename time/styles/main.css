@@ -21,11 +21,11 @@ body {
   min-height: 100vh;
   width: 100vw;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  text-shadow: black 0.125em 0.125em 0.125em;
+  padding: 0;
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: calc(1rem + 1vw);
   text-align: center;
   margin: 0;
 }
@@ -34,22 +34,23 @@ h1 div {
   display: inline-block;
 }
 
-header {
+header#loki {
   background: rgba(211, 121, 24, 0.9);
-  margin: 0.5rem auto;
+  margin: 0 auto;
   /* width: max-content; */
   max-width: 75rem;
-  border-radius: 2rem;
+  border-radius: 0 0 2rem 2rem;
   padding: 0.5rem;
   text-shadow: black 0.125em 0.125em 0.125em;
   color: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   position: fixed;
-  top: 0;
+  top: var(--header-height);
   left: 0;
   right: 0;
   height: 10rem;
-  border: 0.5rem solid rgb(177, 79, 8);
+  /* border: 0.25rem solid rgb(177, 79, 8); */
+  box-shadow: rgb(177, 79, 8, 0.6) 0.125em 0.125em 0.125em;
   z-index: 1;
 }
 
@@ -62,7 +63,7 @@ nav ul {
   align-items: center;
   padding: 0;
   margin: 0.5rem 0;
-  font-size: 1.5rem;
+  font-size: calc(1rem + 1vw);
   color: var(--font-me-up-color-2);
 }
 a {
@@ -85,6 +86,7 @@ section {
   padding: 10rem 1rem 1rem;
   font-family: 'Germania One', sans-serif;
   font-size: 1.5rem;
+  text-shadow: black 0.125em 0.125em 0.125em;
 }
 
 h2 {
@@ -262,4 +264,10 @@ canvas.variant-loki {
   transform: scale(0, 0);
   background: purple;
   box-shadow: purple 0 0 5rem 5rem;
+}
+
+@media screen and (min-width: 600px) {
+  h1 {
+    font-size: 4rem;
+  }
 }
