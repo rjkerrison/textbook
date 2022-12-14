@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React | RJK Textbook</title>
+    <script src="https://rjkerrison.co.uk/script/google-analytics.js"></script>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="https://rjkerrison.co.uk/styles/main.css" />
+    <link rel="stylesheet" href="https://rjkerrison.co.uk/styles/header.css" />
+    <script>
+      window.mainHeading = 'RJK Textbook / Learning React'
+    </script>
+    <script src="https://rjkerrison.co.uk/script/shared.js"></script>
+  </head>
+  <body>
+    <main>
+      <section id="getting-started">
+        <h2>
+          <a href="#getting-started">Getting Started with React</a>
+        </h2>
+        <div class="section-inner">
+          <div>
+            <h3>Basics</h3>
+            <p>
+              React is a frontend framework. It is very popular in industry.
+            </p>
+            <p>
+              To start learning React, you should follow the official React
+              tutorials. The main concepts you'll need to understand to start
+              building in React are Components and Hooks.
+            </p>
+          </div>
+          <div>
+            <h3>Components</h3>
+            <p>
+              Components are instructions to React for rendering something on
+              the page. They are generally written as functions which return a
+              block of JSX. They can be reusable, in which case we would allow
+              them to be configured with <code>props</code>.
+            </p>
+            <p>
+              <dfn><abbr title="JavaScript Extended Syntax">JSX</abbr></dfn>
+              looks like HTML code with additional JavaScript expressions
+              wrapped in curly braces. <code>props</code> are provided with a
+              syntax like HTML attributes.
+            </p>
+          </div>
+          <div>
+            <h3>Hooks</h3>
+            <p>
+              Hooks are additional functionality that can allow components to
+              interact with React's state management features. The first hooks
+              you'll learn about are
+              <code>useState</code> and <code>useEffect</code>.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="additional-features">
+        <h2><a href="#additional-features">Additional Features</a></h2>
+        <div class="section-inner">
+          <div>
+            <h3>Context</h3>
+            <p>
+              To avoid prop-drilling, the common issue in React where props are
+              passed down a series of descendant components before they are
+              finally used programmatically, the React team created the Context
+              module.
+            </p>
+            <p>
+              To use it, you need to use the <code>useContext</code> hook. To
+              build a Context provider, you create a specific component.
+            </p>
+          </div>
+          <div>
+            <h3>DOM Reference</h3>
+            <p>
+              Sometimes, you need direct access to the DOM element. This is
+              where we would use the <code>useRef</code> hook.
+            </p>
+            <p>
+              We pass a <code>ref</code> prop to an HTML element in our JSX;
+              React will then populate the <code>ref.current</code> property
+              with a reference to the rendered DOM element, and from there we
+              have full access to its properties.
+            </p>
+          </div>
+          <div>
+            <h3>React Router</h3>
+            <p>
+              Advancing from a basic single-page application, React Router
+              allows for simulating multiple pages in the browser.
+            </p>
+            <p>
+              React Router is an open source package which is installed as an
+              additional dependency. It it not maintained by the React
+              maintainers, but by a third party.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="vite">
+        <h2>
+          <a href="#vite">Vite</a>
+        </h2>
+        <div class="section-inner">
+          <div>
+            <h3>Alternative build system</h3>
+            <p>
+              You will encounter <em>create-react-app</em> when starting to
+              learn React. As standard, <em>create-react-app</em> uses webpack
+              to bundle all your React code before serving it to the browser.
+            </p>
+            <p>
+              Vite is an alternative to using webpack. You can scaffold a new
+              React app with Vite.
+            </p>
+          </div>
+          <div>
+            <h3>Advantages</h3>
+            <p>
+              The main advantage of switching to Vite is that it is much faster
+              for development as it
+              <a href="https://vitejs.dev/guide/why.html"
+                >serves your code as modules</a
+              >.
+            </p>
+          </div>
+          <div>
+            <h3>Advanced</h3>
+            <p>
+              You can go even further by
+              <a
+                href="https://sambitsahoo.com/blog/vite-code-splitting-that-works.html"
+                >configuring Vite to chunk the dependencies</a
+              >
+              too.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="server-side-rendering">
+        <h2>
+          <a href="#server-side-rendering"> Server-side Rendering </a>
+        </h2>
+        <div class="section-inner">
+          <div>
+            <h3>with Vite</h3>
+            <p>
+              It ought to be fast; I haven't tried it. Check out the
+              <a href="https://vitejs.dev/guide/ssr.html">
+                Vite Server-side Rendering guide</a
+              >.
+            </p>
+          </div>
+          <div>
+            <h3>with Next.js</h3>
+            <p>
+              That's kind of the whole point of Next.js: server-side rendering
+              your React code. Next has its own routing capabilities.
+            </p>
+          </div>
+          <div>
+            <h3>with Remix</h3>
+            <p>
+              That's the whole point of Remix: server-side rendering. Remix is
+              built by the team behind React Router, so if you like React
+              Router, you may like Remix.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="alternatives-to-react">
+        <h2>
+          <a href="#alternatives-to-react">Alternatives to React</a>
+        </h2>
+        <div class="section-inner">
+          <div>
+            <h3>Vue.js</h3>
+            <p>People apparently really like it.</p>
+          </div>
+          <div>
+            <h3>Svelte</h3>
+            <p>
+              It's very cool; I've seen it used once but it really seemed great.
+            </p>
+          </div>
+          <div>
+            <h3>SolidJS</h3>
+            <p>
+              People apparently prefer this even to Svelte. I don't like the
+              name. It is built following in React's footsteps and should be
+              easy to learn after learning React.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
